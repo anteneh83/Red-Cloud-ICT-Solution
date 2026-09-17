@@ -8,7 +8,7 @@ export function PartnersSection() {
     <section id="partners" className="relative py-24 sm:py-32 bg-[#05070a] border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Ecosystem & Alliances
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">

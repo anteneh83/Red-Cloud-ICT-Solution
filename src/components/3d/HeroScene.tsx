@@ -50,7 +50,7 @@ export default function HeroScene() {
     const colors = new Float32Array(particleCount * 3);
     const nodes: THREE.Vector3[] = [];
 
-    const redColor = new THREE.Color("#E50914");
+    const redColor = new THREE.Color("#e61f23");
     const whiteColor = new THREE.Color("#FFFFFF");
     const slateColor = new THREE.Color("#94A3B8");
 

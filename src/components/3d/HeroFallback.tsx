@@ -69,7 +69,7 @@ export function HeroFallback() {
         // Draw node
         ctx.beginPath();
         ctx.arc(nodeA.x, nodeA.y, nodeA.radius, 0, Math.PI * 2);
-        ctx.fillStyle = nodeA.isRed ? "#e50914" : "rgba(248, 250, 252, 0.8)";
+        ctx.fillStyle = nodeA.isRed ? "#e61f23" : "rgba(248, 250, 252, 0.8)";
         ctx.fill();
       }
 

@@ -42,7 +42,7 @@ export function SolutionsShowcase() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
               Core Capabilities
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -58,7 +58,7 @@ export function SolutionsShowcase() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group"
           >
             <span>View Detailed Architecture</span>
-            <ArrowRight className="w-4 h-4 text-[#E50914] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -66,10 +66,10 @@ export function SolutionsShowcase() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Active Solution Highlight Card */}
           <div className="lg:col-span-7 bg-[#0b0f19] border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-300">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#E50914]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#e61f23]/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex items-center justify-between gap-4 mb-6">
-              <span className="text-4xl font-black text-[#E50914]/40 font-mono">
+              <span className="text-4xl font-black text-[#e61f23]/40 font-mono">
                 {activeSolution.index}
               </span>
               <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700/60">
@@ -78,7 +78,7 @@ export function SolutionsShowcase() {
             </div>
 
             <div className="flex items-center gap-4 mb-5">
-              <div className="p-3.5 rounded-xl bg-[#E50914]/15 border border-[#E50914]/30 text-[#E50914]">
+              <div className="p-3.5 rounded-xl bg-[#e61f23]/15 border border-[#e61f23]/30 text-[#e61f23]">
                 {getSolutionIcon(activeSolution.iconName, "w-8 h-8")}
               </div>
               <div>
@@ -103,7 +103,7 @@ export function SolutionsShowcase() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {activeSolution.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 text-xs text-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-[#E50914] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#e61f23] shrink-0" />
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -137,14 +137,14 @@ export function SolutionsShowcase() {
                   onClick={() => setActiveSolutionId(sol.id)}
                   className={`w-full text-left p-5 rounded-xl border transition-all duration-200 flex items-center justify-between group ${
                     isSelected
-                      ? "bg-[#111726] border-[#E50914]/60 shadow-lg"
+                      ? "bg-[#111726] border-[#e61f23]/60 shadow-lg"
                       : "bg-[#080b12] border-slate-800/80 hover:bg-[#0d121e] hover:border-slate-700"
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <span
                       className={`text-sm font-mono font-bold ${
-                        isSelected ? "text-[#E50914]" : "text-slate-500 group-hover:text-slate-300"
+                        isSelected ? "text-[#e61f23]" : "text-slate-500 group-hover:text-slate-300"
                       }`}
                     >
                       {sol.index}
@@ -153,7 +153,7 @@ export function SolutionsShowcase() {
                     <div
                       className={`p-2 rounded-lg transition-colors ${
                         isSelected
-                          ? "bg-[#E50914]/20 text-[#E50914]"
+                          ? "bg-[#e61f23]/20 text-[#e61f23]"
                           : "bg-slate-800 text-slate-400 group-hover:text-slate-200"
                       }`}
                     >
@@ -177,7 +177,7 @@ export function SolutionsShowcase() {
                   <ArrowRight
                     className={`w-4 h-4 transition-transform ${
                       isSelected
-                        ? "text-[#E50914] translate-x-1"
+                        ? "text-[#e61f23] translate-x-1"
                         : "text-slate-600 group-hover:text-slate-400 group-hover:translate-x-0.5"
                     }`}
                   />

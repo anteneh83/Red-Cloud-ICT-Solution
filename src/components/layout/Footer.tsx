@@ -23,15 +23,15 @@ export function Footer() {
             {/* Preserved Direct Contact Details */}
             <div className="space-y-2.5 pt-2">
               <div className="flex items-start gap-3 text-xs text-slate-300">
-                <MapPin className="w-4 h-4 text-[#E50914] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#e61f23] shrink-0 mt-0.5" />
                 <span>{companyData.address.full}</span>
               </div>
               <div className="flex items-center gap-3 text-xs text-slate-300">
-                <Phone className="w-4 h-4 text-[#E50914] shrink-0" />
+                <Phone className="w-4 h-4 text-[#e61f23] shrink-0" />
                 <span>Hotline: <strong className="text-white font-semibold">{companyData.contact.shortCode}</strong></span>
               </div>
               <div className="flex items-center gap-3 text-xs text-slate-300">
-                <Mail className="w-4 h-4 text-[#E50914] shrink-0" />
+                <Mail className="w-4 h-4 text-[#e61f23] shrink-0" />
                 <a href={`mailto:${companyData.contact.email}`} className="hover:text-white transition-colors">
                   {companyData.contact.email}
                 </a>
@@ -45,10 +45,10 @@ export function Footer() {
                   href={companyData.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-[#E50914]/40 text-xs text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-[#e61f23]/40 text-xs text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
                 >
                   <span>LinkedIn</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#E50914]" />
+                  <ArrowUpRight className="w-3 h-3 text-[#e61f23]" />
                 </a>
               )}
               {companyData.social.telegram && (
@@ -56,10 +56,10 @@ export function Footer() {
                   href={companyData.social.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-[#E50914]/40 text-xs text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-[#e61f23]/40 text-xs text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
                 >
                   <span>Telegram</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#E50914]" />
+                  <ArrowUpRight className="w-3 h-3 text-[#e61f23]" />
                 </a>
               )}
             </div>
@@ -77,7 +77,7 @@ export function Footer() {
                     href={`/solutions/${sol.slug}`}
                     className="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 group"
                   >
-                    <span className="text-[10px] text-slate-500 group-hover:text-[#E50914] transition-colors">{sol.index}</span>
+                    <span className="text-[10px] text-slate-500 group-hover:text-[#e61f23] transition-colors">{sol.index}</span>
                     <span>{sol.title}</span>
                   </Link>
                 </li>

@@ -11,7 +11,7 @@ export function WhyRedCloud() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Bold Enterprise Statement */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider">
               The Enterprise Standard
             </div>
 
@@ -26,7 +26,7 @@ export function WhyRedCloud() {
 
             <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
               <div className="flex items-center gap-3">
-                <Shield className="w-5 h-5 text-[#E50914]" />
+                <Shield className="w-5 h-5 text-[#e61f23]" />
                 <span className="text-sm font-bold text-white">Direct Enterprise Support</span>
               </div>
               <p className="text-xs text-slate-400">
@@ -53,7 +53,7 @@ export function WhyRedCloud() {
                 className="p-6 sm:p-8 rounded-2xl bg-[#090d15] border border-slate-800/90 hover:border-slate-700 transition-all group"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl font-black font-mono text-[#E50914] group-hover:scale-110 transition-transform">
+                  <span className="text-2xl font-black font-mono text-[#e61f23] group-hover:scale-110 transition-transform">
                     {pillar.number}
                   </span>
 
@@ -61,7 +61,7 @@ export function WhyRedCloud() {
                     <h3 className="text-lg sm:text-xl font-bold text-white">
                       {pillar.title}
                     </h3>
-                    <div className="text-xs font-semibold text-[#E50914]">
+                    <div className="text-xs font-semibold text-[#e61f23]">
                       {pillar.subtitle}
                     </div>
                     <p className="text-sm text-slate-300 leading-relaxed pt-1">

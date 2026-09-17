@@ -54,17 +54,17 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
   const getIcon = (name: string) => {
     switch (name) {
       case "Server":
-        return <Server className="w-8 h-8 text-[#E50914]" />;
+        return <Server className="w-8 h-8 text-[#e61f23]" />;
       case "ShoppingBag":
-        return <ShoppingBag className="w-8 h-8 text-[#E50914]" />;
+        return <ShoppingBag className="w-8 h-8 text-[#e61f23]" />;
       case "CreditCard":
-        return <CreditCard className="w-8 h-8 text-[#E50914]" />;
+        return <CreditCard className="w-8 h-8 text-[#e61f23]" />;
       case "Radio":
-        return <Radio className="w-8 h-8 text-[#E50914]" />;
+        return <Radio className="w-8 h-8 text-[#e61f23]" />;
       case "Workflow":
-        return <Workflow className="w-8 h-8 text-[#E50914]" />;
+        return <Workflow className="w-8 h-8 text-[#e61f23]" />;
       default:
-        return <Server className="w-8 h-8 text-[#E50914]" />;
+        return <Server className="w-8 h-8 text-[#e61f23]" />;
     }
   };
 
@@ -85,7 +85,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
       <section className="py-16 bg-radial-gradient border-b border-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl font-mono font-black text-[#E50914]">
+            <span className="text-3xl font-mono font-black text-[#e61f23]">
               {solution.index}
             </span>
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800 text-slate-300">
@@ -96,7 +96,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl space-y-4">
               <div className="flex items-center gap-4">
-                <div className="p-3.5 rounded-2xl bg-[#E50914]/15 border border-[#E50914]/30">
+                <div className="p-3.5 rounded-2xl bg-[#e61f23]/15 border border-[#e61f23]/30">
                   {getIcon(solution.iconName)}
                 </div>
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight">
@@ -149,7 +149,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                       className="p-6 rounded-2xl bg-[#0b0f19] border border-slate-800 space-y-2"
                     >
                       <h4 className="text-base font-bold text-white flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#E50914]" />
+                        <CheckCircle2 className="w-4 h-4 text-[#e61f23]" />
                         <span>{cap.title}</span>
                       </h4>
                       <p className="text-sm text-slate-300 leading-relaxed pl-6">
@@ -166,7 +166,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
               {/* Architecture Points */}
               <div className="p-7 rounded-2xl bg-[#0a0e18] border border-slate-800 space-y-4">
                 <div className="flex items-center gap-2.5 text-white font-bold text-base">
-                  <Cpu className="w-5 h-5 text-[#E50914]" />
+                  <Cpu className="w-5 h-5 text-[#e61f23]" />
                   <span>Architectural Highlights</span>
                 </div>
                 <div className="space-y-2.5">
@@ -175,7 +175,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                       key={idx}
                       className="text-xs text-slate-300 p-3 rounded-lg bg-slate-900/80 border border-slate-800 flex items-start gap-2.5"
                     >
-                      <span className="text-[#E50914] font-mono">0{idx + 1}.</span>
+                      <span className="text-[#e61f23] font-mono">0{idx + 1}.</span>
                       <span>{pt}</span>
                     </div>
                   ))}
@@ -185,7 +185,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
               {/* Target Use Cases */}
               <div className="p-7 rounded-2xl bg-[#0a0e18] border border-slate-800 space-y-4">
                 <div className="flex items-center gap-2.5 text-white font-bold text-base">
-                  <Zap className="w-5 h-5 text-[#E50914]" />
+                  <Zap className="w-5 h-5 text-[#e61f23]" />
                   <span>Target Industry Use Cases</span>
                 </div>
                 <div className="space-y-2">
@@ -230,8 +230,8 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                 className="p-7 rounded-2xl bg-[#080c14] border border-slate-800 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mb-4">
-                    <ShieldCheck className="w-5 h-5 text-[#E50914]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/20 flex items-center justify-center mb-4">
+                    <ShieldCheck className="w-5 h-5 text-[#e61f23]" />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">
                     {benefit.title}

@@ -49,11 +49,11 @@ export function ContactSection() {
   return (
     <section id="contact" className="relative py-24 sm:py-32 bg-[#05070a] border-t border-slate-900 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#E50914]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#e61f23]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Direct Enterprise Engagement
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -76,7 +76,7 @@ export function ContactSection() {
               {/* Verified Contact Details */}
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#E50914]/10 border border-[#E50914]/25 text-[#E50914] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -86,13 +86,13 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#E50914]/10 border border-[#E50914]/25 text-[#E50914] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Enterprise Hotline</div>
                     <div className="text-lg font-black text-white mt-0.5">
-                      <a href={`tel:${companyData.contact.shortCode}`} className="hover:text-[#E50914] transition-colors">
+                      <a href={`tel:${companyData.contact.shortCode}`} className="hover:text-[#e61f23] transition-colors">
                         {companyData.contact.shortCode}
                       </a>
                     </div>
@@ -100,13 +100,13 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#E50914]/10 border border-[#E50914]/25 text-[#E50914] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Email</div>
                     <div className="text-sm font-semibold text-white mt-0.5">
-                      <a href={`mailto:${companyData.contact.email}`} className="hover:text-[#E50914] transition-colors">
+                      <a href={`mailto:${companyData.contact.email}`} className="hover:text-[#e61f23] transition-colors">
                         {companyData.contact.email}
                       </a>
                     </div>
@@ -129,7 +129,7 @@ export function ContactSection() {
               />
               <div className="absolute bottom-2 left-2 right-2 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700 text-[11px] text-slate-300 flex items-center justify-between">
                 <span>Ethiopian IT Park Hub</span>
-                <span className="text-[#E50914] font-semibold">Verified Location</span>
+                <span className="text-[#e61f23] font-semibold">Verified Location</span>
               </div>
             </div>
           </div>
@@ -181,7 +181,7 @@ export function ContactSection() {
                       className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                         errors.name
                           ? "border-red-500 focus:ring-red-500/50"
-                          : "border-slate-800 focus:border-[#E50914] focus:ring-[#E50914]/20"
+                          : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
                       }`}
                     />
                     {errors.name && (
@@ -201,7 +201,7 @@ export function ContactSection() {
                       className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                         errors.email
                           ? "border-red-500 focus:ring-red-500/50"
-                          : "border-slate-800 focus:border-[#E50914] focus:ring-[#E50914]/20"
+                          : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
                       }`}
                     />
                     {errors.email && (
@@ -223,7 +223,7 @@ export function ContactSection() {
                     className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                       errors.subject
                         ? "border-red-500 focus:ring-red-500/50"
-                        : "border-slate-800 focus:border-[#E50914] focus:ring-[#E50914]/20"
+                        : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
                     }`}
                   />
                   {errors.subject && (
@@ -244,7 +244,7 @@ export function ContactSection() {
                     className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                       errors.message
                         ? "border-red-500 focus:ring-red-500/50"
-                        : "border-slate-800 focus:border-[#E50914] focus:ring-[#E50914]/20"
+                        : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
                     }`}
                   />
                   {errors.message && (

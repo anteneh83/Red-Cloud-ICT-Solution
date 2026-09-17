@@ -23,17 +23,17 @@ export default function SolutionsOverviewPage() {
   const getIcon = (name: string) => {
     switch (name) {
       case "Server":
-        return <Server className="w-6 h-6 text-[#E50914]" />;
+        return <Server className="w-6 h-6 text-[#e61f23]" />;
       case "ShoppingBag":
-        return <ShoppingBag className="w-6 h-6 text-[#E50914]" />;
+        return <ShoppingBag className="w-6 h-6 text-[#e61f23]" />;
       case "CreditCard":
-        return <CreditCard className="w-6 h-6 text-[#E50914]" />;
+        return <CreditCard className="w-6 h-6 text-[#e61f23]" />;
       case "Radio":
-        return <Radio className="w-6 h-6 text-[#E50914]" />;
+        return <Radio className="w-6 h-6 text-[#e61f23]" />;
       case "Workflow":
-        return <Workflow className="w-6 h-6 text-[#E50914]" />;
+        return <Workflow className="w-6 h-6 text-[#e61f23]" />;
       default:
-        return <Server className="w-6 h-6 text-[#E50914]" />;
+        return <Server className="w-6 h-6 text-[#e61f23]" />;
     }
   };
 
@@ -42,7 +42,7 @@ export default function SolutionsOverviewPage() {
       {/* Header */}
       <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Five Foundational Pillars
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
@@ -64,7 +64,7 @@ export default function SolutionsOverviewPage() {
             >
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl font-mono font-black text-[#E50914]">
+                  <span className="text-3xl font-mono font-black text-[#e61f23]">
                     {sol.index}
                   </span>
                   <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800 text-slate-300">
@@ -73,7 +73,7 @@ export default function SolutionsOverviewPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20">
+                  <div className="p-3 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/20">
                     {getIcon(sol.iconName)}
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -88,7 +88,7 @@ export default function SolutionsOverviewPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                   {sol.features.slice(0, 4).map((f, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-[#E50914] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#e61f23] shrink-0" />
                       <span>{f}</span>
                     </div>
                   ))}

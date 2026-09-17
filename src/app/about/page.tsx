@@ -17,7 +17,7 @@ export default function AboutPage() {
       {/* Page Header */}
       <section className="relative py-16 bg-radial-gradient border-b border-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Established in {companyData.established}
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
@@ -48,15 +48,15 @@ export default function AboutPage() {
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
                 <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Headquarters Hub</div>
                 <div className="text-sm font-semibold text-white">{companyData.address.full}</div>
-                <div className="text-xs text-[#E50914]">Direct Enterprise Support Shortcode: {companyData.contact.shortCode}</div>
+                <div className="text-xs text-[#e61f23]">Direct Enterprise Support Shortcode: {companyData.contact.shortCode}</div>
               </div>
             </div>
 
             <div className="lg:col-span-6 space-y-6">
               {/* Mission */}
               <div id="mission" className="p-8 rounded-2xl bg-[#0a0e18] border border-slate-800 space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#E50914]/15 border border-[#E50914]/30 flex items-center justify-center">
-                  <Target className="w-6 h-6 text-[#E50914]" />
+                <div className="w-12 h-12 rounded-xl bg-[#e61f23]/15 border border-[#e61f23]/30 flex items-center justify-center">
+                  <Target className="w-6 h-6 text-[#e61f23]" />
                 </div>
                 <h3 className="text-xl font-bold text-white uppercase tracking-wider">
                   Our Mission
@@ -98,13 +98,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {whyRedCloudData.slice(0, 3).map((item) => (
               <div key={item.number} className="p-7 rounded-2xl bg-[#080c14] border border-slate-800">
-                <span className="text-xl font-mono font-black text-[#E50914] mb-3 block">
+                <span className="text-xl font-mono font-black text-[#e61f23] mb-3 block">
                   {item.number}
                 </span>
                 <h3 className="text-lg font-bold text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#E50914] mb-3 font-medium">
+                <p className="text-xs text-[#e61f23] mb-3 font-medium">
                   {item.subtitle}
                 </p>
                 <p className="text-xs text-slate-300 leading-relaxed">

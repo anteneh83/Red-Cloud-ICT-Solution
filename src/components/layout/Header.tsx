@@ -58,17 +58,17 @@ export function Header() {
   const getSolutionIcon = (name?: string) => {
     switch (name) {
       case "Server":
-        return <Server className="w-4 h-4 text-[#E50914]" />;
+        return <Server className="w-4 h-4 text-[#e61f23]" />;
       case "ShoppingBag":
-        return <ShoppingBag className="w-4 h-4 text-[#E50914]" />;
+        return <ShoppingBag className="w-4 h-4 text-[#e61f23]" />;
       case "CreditCard":
-        return <CreditCard className="w-4 h-4 text-[#E50914]" />;
+        return <CreditCard className="w-4 h-4 text-[#e61f23]" />;
       case "Radio":
-        return <Radio className="w-4 h-4 text-[#E50914]" />;
+        return <Radio className="w-4 h-4 text-[#e61f23]" />;
       case "Workflow":
-        return <Workflow className="w-4 h-4 text-[#E50914]" />;
+        return <Workflow className="w-4 h-4 text-[#e61f23]" />;
       default:
-        return <Server className="w-4 h-4 text-[#E50914]" />;
+        return <Server className="w-4 h-4 text-[#e61f23]" />;
     }
   };
 
@@ -109,7 +109,7 @@ export function Header() {
                       {item.label}
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          solutionsOpen ? "rotate-180 text-[#E50914]" : ""
+                          solutionsOpen ? "rotate-180 text-[#e61f23]" : ""
                         }`}
                       />
                     </button>
@@ -124,11 +124,11 @@ export function Header() {
                               href={child.href}
                               className="group flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-800/50 transition-all"
                             >
-                              <div className="p-2 rounded-md bg-[#161c2b] group-hover:bg-[#E50914]/10 transition-colors mt-0.5">
+                              <div className="p-2 rounded-md bg-[#161c2b] group-hover:bg-[#e61f23]/10 transition-colors mt-0.5">
                                 {getSolutionIcon(child.iconName)}
                               </div>
                               <div>
-                                <div className="text-sm font-medium text-slate-100 group-hover:text-[#E50914] transition-colors">
+                                <div className="text-sm font-medium text-slate-100 group-hover:text-[#e61f23] transition-colors">
                                   {child.label}
                                 </div>
                                 <div className="text-xs text-slate-400 line-clamp-1 mt-0.5">
@@ -143,7 +143,7 @@ export function Header() {
                               className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-md transition-colors"
                             >
                               <span>Explore All 5 Core Solutions</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-[#E50914]" />
+                              <ArrowRight className="w-3.5 h-3.5 text-[#e61f23]" />
                             </Link>
                           </div>
                         </div>
@@ -174,10 +174,10 @@ export function Header() {
             {/* 8025 Shortcode Pill */}
             <a
               href={`tel:${companyData.contact.shortCode}`}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 hover:border-[#E50914]/40 text-xs font-semibold text-slate-200 hover:text-white transition-all"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 hover:border-[#e61f23]/40 text-xs font-semibold text-slate-200 hover:text-white transition-all"
               title="Call Red Cloud Enterprise Hotline"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#E50914]" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#e61f23]" />
               <span>{companyData.contact.shortCode}</span>
             </a>
 
@@ -197,13 +197,13 @@ export function Header() {
               href={`tel:${companyData.contact.shortCode}`}
               className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 mr-1"
             >
-              <PhoneCall className="w-3 h-3 text-[#E50914]" />
+              <PhoneCall className="w-3 h-3 text-[#e61f23]" />
               <span>{companyData.contact.shortCode}</span>
             </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-[#E50914]"
+              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-[#e61f23]"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

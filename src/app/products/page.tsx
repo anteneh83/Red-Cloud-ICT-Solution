@@ -16,7 +16,7 @@ export default function ProductsPage() {
     <main className="flex-1 pt-28 pb-20">
       <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Software & Platforms
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
@@ -38,7 +38,7 @@ export default function ProductsPage() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#E50914] px-3 py-1 rounded bg-[#E50914]/10 border border-[#E50914]/20">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#e61f23] px-3 py-1 rounded bg-[#e61f23]/10 border border-[#e61f23]/20">
                       {prod.badge}
                     </span>
                     <span className="text-xs text-slate-400 font-medium">
@@ -47,7 +47,7 @@ export default function ProductsPage() {
                   </div>
 
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-3 rounded-xl bg-slate-800 text-[#E50914]">
+                    <div className="p-3 rounded-xl bg-slate-800 text-[#e61f23]">
                       <Package className="w-6 h-6" />
                     </div>
                     <h2 className="text-2xl font-bold text-white">
@@ -65,7 +65,7 @@ export default function ProductsPage() {
                     </div>
                     {prod.capabilities.map((cap, cIdx) => (
                       <div key={cIdx} className="flex items-center gap-2.5 text-xs text-slate-300">
-                        <Check className="w-4 h-4 text-[#E50914] shrink-0" />
+                        <Check className="w-4 h-4 text-[#e61f23] shrink-0" />
                         <span>{cap}</span>
                       </div>
                     ))}

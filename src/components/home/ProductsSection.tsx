@@ -9,7 +9,7 @@ export function ProductsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
               Software & Platforms
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -25,7 +25,7 @@ export function ProductsSection() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group"
           >
             <span>Explore All Product Frameworks</span>
-            <ArrowRight className="w-4 h-4 text-[#E50914] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -38,7 +38,7 @@ export function ProductsSection() {
             >
               <div>
                 <div className="flex items-center justify-between gap-4 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#E50914] px-2.5 py-1 rounded bg-[#E50914]/10 border border-[#E50914]/20">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#e61f23] px-2.5 py-1 rounded bg-[#e61f23]/10 border border-[#e61f23]/20">
                     {product.badge}
                   </span>
                   <span className="text-xs text-slate-400 font-medium">
@@ -47,7 +47,7 @@ export function ProductsSection() {
                 </div>
 
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 rounded-lg bg-slate-800 text-white group-hover:bg-[#E50914] group-hover:text-white transition-colors">
+                  <div className="p-2.5 rounded-lg bg-slate-800 text-white group-hover:bg-[#e61f23] group-hover:text-white transition-colors">
                     <Package className="w-5 h-5" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:text-slate-100">
@@ -63,7 +63,7 @@ export function ProductsSection() {
                 <div className="space-y-2 mb-6 pt-4 border-t border-slate-800/80">
                   {product.capabilities.map((cap, cIdx) => (
                     <div key={cIdx} className="flex items-center gap-2.5 text-xs text-slate-300">
-                      <Check className="w-3.5 h-3.5 text-[#E50914] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#e61f23] shrink-0" />
                       <span>{cap}</span>
                     </div>
                   ))}
@@ -77,10 +77,10 @@ export function ProductsSection() {
                 </span>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-[#E50914] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-[#e61f23] transition-colors"
                 >
                   <span>Inquire</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#E50914]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#e61f23]" />
                 </Link>
               </div>
             </div>

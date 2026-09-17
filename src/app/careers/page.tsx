@@ -16,7 +16,7 @@ export default function CareersPage() {
     <main className="flex-1 pt-28 pb-20">
       <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Talent & Culture
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
@@ -32,8 +32,8 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Vacancies Notice Banner (Strict Rule Adherence) */}
           <div className="p-8 rounded-3xl bg-[#090d15] border border-slate-800 text-center space-y-4 max-w-3xl mx-auto mb-16 shadow-2xl">
-            <div className="w-12 h-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/30 flex items-center justify-center mx-auto">
-              <Briefcase className="w-6 h-6 text-[#E50914]" />
+            <div className="w-12 h-12 rounded-2xl bg-[#e61f23]/10 border border-[#e61f23]/30 flex items-center justify-center mx-auto">
+              <Briefcase className="w-6 h-6 text-[#e61f23]" />
             </div>
             <h2 className="text-2xl font-bold text-white">
               {openVacanciesNotice.headline}
@@ -46,7 +46,7 @@ export default function CareersPage() {
                 href={`mailto:${openVacanciesNotice.inquiryEmail}?subject=Talent Inquiry - Red Cloud ICT Solutions`}
                 className="btn-secondary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider"
               >
-                <Mail className="w-4 h-4 text-[#E50914]" />
+                <Mail className="w-4 h-4 text-[#e61f23]" />
                 <span>Submit General Talent Resume ({openVacanciesNotice.inquiryEmail})</span>
               </a>
             </div>
@@ -69,7 +69,7 @@ export default function CareersPage() {
                 className="p-7 rounded-2xl bg-[#0a0e18] border border-slate-800 space-y-2"
               >
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#E50914] shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-[#e61f23] shrink-0" />
                   <h4 className="text-base font-bold text-white">{dept.name}</h4>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed pl-8">

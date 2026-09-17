@@ -18,7 +18,7 @@ export default function InsightsPage() {
     <main className="flex-1 pt-28 pb-20">
       <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
             Analysis & Updates
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
@@ -41,7 +41,7 @@ export default function InsightsPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all ${
                   selectedCategory === cat
-                    ? "bg-[#E50914] text-white shadow-lg shadow-[#E50914]/30"
+                    ? "bg-[#e61f23] text-white shadow-lg shadow-[#e61f23]/30"
                     : "bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
                 }`}
               >
@@ -60,7 +60,7 @@ export default function InsightsPage() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="text-xs font-mono font-bold uppercase text-[#E50914] px-2.5 py-0.5 rounded bg-[#E50914]/10">
+                    <span className="text-xs font-mono font-bold uppercase text-[#e61f23] px-2.5 py-0.5 rounded bg-[#e61f23]/10">
                       {article.category}
                     </span>
                     <div className="flex items-center gap-1.5 text-xs text-slate-400">

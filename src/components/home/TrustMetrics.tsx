@@ -9,12 +9,12 @@ export function TrustMetrics() {
           {companyData.metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-xl bg-slate-900/40 border border-slate-800/80 hover:border-[#E50914]/30 transition-all group"
+              className="p-6 rounded-xl bg-slate-900/40 border border-slate-800/80 hover:border-[#e61f23]/30 transition-all group"
             >
               <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
                 {metric.label}
               </div>
-              <div className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#E50914] transition-colors mb-2">
+              <div className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#e61f23] transition-colors mb-2">
                 {metric.value}
               </div>
               <p className="text-xs text-slate-400 leading-normal">

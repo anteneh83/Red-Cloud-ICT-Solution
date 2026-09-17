@@ -16,19 +16,19 @@ export function IndustriesSection() {
   const getIndustryIcon = (name: string) => {
     switch (name) {
       case "Landmark":
-        return <Landmark className="w-6 h-6 text-[#E50914]" />;
+        return <Landmark className="w-6 h-6 text-[#e61f23]" />;
       case "Store":
-        return <Store className="w-6 h-6 text-[#E50914]" />;
+        return <Store className="w-6 h-6 text-[#e61f23]" />;
       case "Network":
-        return <Network className="w-6 h-6 text-[#E50914]" />;
+        return <Network className="w-6 h-6 text-[#e61f23]" />;
       case "Building2":
-        return <Building2 className="w-6 h-6 text-[#E50914]" />;
+        return <Building2 className="w-6 h-6 text-[#e61f23]" />;
       case "Briefcase":
-        return <Briefcase className="w-6 h-6 text-[#E50914]" />;
+        return <Briefcase className="w-6 h-6 text-[#e61f23]" />;
       case "Zap":
-        return <Zap className="w-6 h-6 text-[#E50914]" />;
+        return <Zap className="w-6 h-6 text-[#e61f23]" />;
       default:
-        return <Building2 className="w-6 h-6 text-[#E50914]" />;
+        return <Building2 className="w-6 h-6 text-[#e61f23]" />;
     }
   };
 
@@ -37,7 +37,7 @@ export function IndustriesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 text-xs font-semibold text-[#E50914] uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
               Sector Specialization
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -53,7 +53,7 @@ export function IndustriesSection() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group"
           >
             <span>View All Industry Solutions</span>
-            <ArrowRight className="w-4 h-4 text-[#E50914] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -62,10 +62,10 @@ export function IndustriesSection() {
           {industriesData.map((item) => (
             <div
               key={item.id}
-              className="bg-[#090d15] border border-slate-800/90 hover:border-[#E50914]/40 rounded-2xl p-7 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-[#090d15] border border-slate-800/90 hover:border-[#e61f23]/40 rounded-2xl p-7 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#E50914]/10 border border-[#E50914]/25 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
                   {getIndustryIcon(item.iconName)}
                 </div>
 
