@@ -1,89 +1,96 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { productsData } from "@/data/products";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Check, ArrowUpRight, ArrowRight, Package } from "lucide-react";
 
 export function ProductsSection() {
   return (
-    <section id="products" className="relative py-24 sm:py-32 bg-[#05070a] border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
-              Software & Platforms
+    <section id="products" className="relative py-24 sm:py-32 bg-gray-50/70 border-t border-gray-200">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <ScrollReveal direction="up">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-3">
+                Software & Platforms
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                Enterprise <span className="text-[#e61f23]">Products</span>
+              </h2>
+              <p className="text-gray-600 max-w-xl text-base sm:text-lg mt-2">
+                Scalable proprietary software engines and operational platforms built for high-throughput enterprise execution.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              ENTERPRISE <span className="text-gradient-red">PRODUCTS</span>
-            </h2>
-            <p className="text-slate-400 max-w-xl text-base sm:text-lg mt-3">
-              Scalable proprietary software engines and operational platforms built for high-throughput enterprise execution.
-            </p>
-          </div>
 
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group"
-          >
-            <span>Explore All Product Frameworks</span>
-            <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {productsData.map((product) => (
-            <div
-              key={product.id}
-              className="bg-[#0a0e18] border border-slate-800 hover:border-slate-700 rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-[#e61f23] transition-colors group"
             >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#e61f23] px-2.5 py-1 rounded bg-[#e61f23]/10 border border-[#e61f23]/20">
-                    {product.badge}
-                  </span>
-                  <span className="text-xs text-slate-400 font-medium">
-                    {product.category}
-                  </span>
-                </div>
+              <span>Explore All Product Frameworks</span>
+              <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1.5 transition-transform" />
+            </Link>
+          </div>
+        </ScrollReveal>
 
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 rounded-lg bg-slate-800 text-white group-hover:bg-[#e61f23] group-hover:text-white transition-colors">
-                    <Package className="w-5 h-5" />
+        {/* Product Cards Grid with Staggered Scroll Animation and Dynamic Hover */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {productsData.map((product, idx) => (
+            <ScrollReveal key={product.id} delay={idx * 0.15} direction="up">
+              <div className="relative bg-white border border-gray-200 hover:border-[#e61f23] rounded-3xl p-8 sm:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/10 flex flex-col justify-between h-full group overflow-hidden">
+                {/* Top red accent bar that reveals on hover */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#e61f23] to-[#ff474b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#e61f23] px-3 py-1 rounded-full bg-red-50 border border-red-200">
+                      {product.badge}
+                    </span>
+                    <span className="text-xs text-gray-500 font-medium">
+                      {product.category}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-slate-100">
-                    {product.name}
-                  </h3>
-                </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                  {product.description}
-                </p>
-
-                {/* Capabilities */}
-                <div className="space-y-2 mb-6 pt-4 border-t border-slate-800/80">
-                  {product.capabilities.map((cap, cIdx) => (
-                    <div key={cIdx} className="flex items-center gap-2.5 text-xs text-slate-300">
-                      <Check className="w-3.5 h-3.5 text-[#e61f23] shrink-0" />
-                      <span>{cap}</span>
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div className="p-3 rounded-2xl bg-red-50 text-[#e61f23] border border-red-200 group-hover:bg-[#e61f23] group-hover:text-white transition-colors duration-300 shadow-xs">
+                      <Package className="w-6 h-6" />
                     </div>
-                  ))}
+                    <h3 className="text-2xl font-bold text-gray-950 group-hover:text-[#e61f23] transition-colors">
+                      {product.name}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                    {product.description}
+                  </p>
+
+                  {/* Capabilities */}
+                  <div className="space-y-2.5 mb-6 pt-4 border-t border-gray-100">
+                    {product.capabilities.map((cap, cIdx) => (
+                      <div key={cIdx} className="flex items-center gap-2.5 text-xs text-gray-700">
+                        <Check className="w-4 h-4 text-[#e61f23] shrink-0" />
+                        <span>{cap}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Status Note & Link */}
+                <div className="pt-5 border-t border-gray-100 flex items-center justify-between gap-4">
+                  <span className="text-xs text-gray-500 italic">
+                    {product.statusText}
+                  </span>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-800 hover:text-[#e61f23] group-hover:translate-x-0.5 transition-all"
+                  >
+                    <span>Inquire</span>
+                    <ArrowUpRight className="w-4 h-4 text-[#e61f23]" />
+                  </Link>
                 </div>
               </div>
-
-              {/* Status Note & Link */}
-              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
-                <span className="text-[11px] text-slate-400 italic">
-                  {product.statusText}
-                </span>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-[#e61f23] transition-colors"
-                >
-                  <span>Inquire</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#e61f23]" />
-                </Link>
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

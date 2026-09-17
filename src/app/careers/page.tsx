@@ -1,9 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
-import Link from "next/link";
 import { careerDepartments, openVacanciesNotice } from "@/data/careers";
 import { companyData } from "@/data/company";
-import { Briefcase, ArrowRight, Mail, Users, CheckCircle2 } from "lucide-react";
+import { Briefcase, Mail, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Careers | ${companyData.name}`,
@@ -13,32 +12,32 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <main className="flex-1 pt-28 pb-20">
-      <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
+    <main className="flex-1 pt-24 pb-20 bg-white">
+      <section className="py-16 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
             Talent & Culture
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
-            BUILD WITH <span className="text-gradient-red">RED CLOUD</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
+            Build With <span className="text-[#e61f23]">Red Cloud</span>
           </h1>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             {openVacanciesNotice.description}
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-[#07090e]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Vacancies Notice Banner (Strict Rule Adherence) */}
-          <div className="p-8 rounded-3xl bg-[#090d15] border border-slate-800 text-center space-y-4 max-w-3xl mx-auto mb-16 shadow-2xl">
-            <div className="w-12 h-12 rounded-2xl bg-[#e61f23]/10 border border-[#e61f23]/30 flex items-center justify-center mx-auto">
+          {/* Vacancies Notice Banner */}
+          <div className="p-8 rounded-3xl bg-gray-50 border border-gray-200 text-center space-y-4 max-w-3xl mx-auto mb-16 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mx-auto">
               <Briefcase className="w-6 h-6 text-[#e61f23]" />
             </div>
-            <h2 className="text-2xl font-bold text-white">
+            <h2 className="text-2xl font-bold text-gray-950">
               {openVacanciesNotice.headline}
             </h2>
-            <p className="text-slate-300 text-sm max-w-xl mx-auto">
+            <p className="text-gray-600 text-sm max-w-xl mx-auto">
               {openVacanciesNotice.statusMessage}
             </p>
             <div className="pt-2">
@@ -54,10 +53,10 @@ export default function CareersPage() {
 
           {/* Department Areas */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-gray-950">
               Our Core Engineering Disciplines
             </h3>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-gray-600 text-sm mt-1">
               Teams operating across our Ethiopian IT Park facility and remote collaborative units.
             </p>
           </div>
@@ -66,13 +65,13 @@ export default function CareersPage() {
             {careerDepartments.map((dept, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-[#0a0e18] border border-slate-800 space-y-2"
+                className="p-7 rounded-2xl bg-gray-50 border border-gray-200 space-y-2 shadow-xs"
               >
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#e61f23] shrink-0" />
-                  <h4 className="text-base font-bold text-white">{dept.name}</h4>
+                  <h4 className="text-base font-bold text-gray-950">{dept.name}</h4>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed pl-8">
+                <p className="text-xs text-gray-600 leading-relaxed pl-8">
                   {dept.description}
                 </p>
               </div>

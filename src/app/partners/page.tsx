@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { partnersData } from "@/data/partners";
 import { companyData } from "@/data/company";
-import { Handshake, ArrowRight, ShieldCheck } from "lucide-react";
+import { Handshake, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Partners & Alliances | ${companyData.name}`,
@@ -13,37 +13,37 @@ export const metadata: Metadata = {
 
 export default function PartnersPage() {
   return (
-    <main className="flex-1 pt-28 pb-20">
-      <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
+    <main className="flex-1 pt-24 pb-20 bg-white">
+      <section className="py-16 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
             Ecosystem Network
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
-            PARTNERS & <span className="text-gradient-red">ALLIANCES</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
+            Partners & <span className="text-[#e61f23]">Alliances</span>
           </h1>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Strategic collaborations powering Africa&apos;s digital infrastructure across telecommunications, banking switches, and enterprise platforms.
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-[#07090e]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {partnersData.map((cat, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-2xl bg-[#090d15] border border-slate-800 flex flex-col justify-between"
+                className="p-8 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/20 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center mb-5">
                     <Handshake className="w-6 h-6 text-[#e61f23]" />
                   </div>
-                  <h2 className="text-xl font-bold text-white mb-2">
+                  <h2 className="text-xl font-bold text-gray-950 mb-2">
                     {cat.category}
                   </h2>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <p className="text-xs text-gray-600 leading-relaxed mb-6">
                     {cat.description}
                   </p>
 
@@ -51,17 +51,17 @@ export default function PartnersPage() {
                     {cat.partners.map((p, pIdx) => (
                       <div
                         key={pIdx}
-                        className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between"
+                        className="p-3.5 rounded-xl bg-white border border-gray-200 flex items-center justify-between"
                       >
-                        <span className="text-xs font-medium text-slate-200">{p.name}</span>
-                        <span className="text-[10px] font-mono text-slate-400">{p.type}</span>
+                        <span className="text-xs font-medium text-gray-800">{p.name}</span>
+                        <span className="text-[10px] font-mono text-gray-500">{p.type}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-800/80 text-center">
-                  <span className="text-xs text-slate-500 italic">
+                <div className="pt-6 mt-6 border-t border-gray-200 text-center">
+                  <span className="text-xs text-gray-400 italic">
                     [Partner logos will be added upon verified authorization]
                   </span>
                 </div>
@@ -69,11 +69,11 @@ export default function PartnersPage() {
             ))}
           </div>
 
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#0a0e18] border border-slate-800 text-center space-y-4 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-white">
+          <div className="p-8 sm:p-12 rounded-3xl bg-gray-50 border border-gray-200 text-center space-y-4 max-w-3xl mx-auto shadow-xs">
+            <h3 className="text-2xl font-bold text-gray-950">
               Join Our Partner Ecosystem
             </h3>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-gray-600">
               Are you a telecom operator, software vendor, or enterprise integrator looking to expand your regional infrastructure footprint? Connect with our partnership team.
             </p>
             <div className="pt-2">

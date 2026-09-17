@@ -14,16 +14,16 @@ export interface NavItem {
 export const navigationItems: NavItem[] = [
   {
     label: "Home",
-    href: "/",
+    href: "/#hero",
   },
   {
     label: "About",
-    href: "/about",
+    href: "/#about",
     description: "Our history, mission, leadership, and digital vision.",
   },
   {
-    label: "Solutions",
-    href: "/solutions",
+    label: "Services",
+    href: "/#services",
     description: "Enterprise ICT and digital infrastructure services.",
     children: [
       {
@@ -85,7 +85,7 @@ export const navigationItems: NavItem[] = [
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/#contact",
     description: "Connect with our enterprise engineering and advisory teams.",
   },
 ];

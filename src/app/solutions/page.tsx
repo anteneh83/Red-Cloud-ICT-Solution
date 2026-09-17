@@ -9,8 +9,7 @@ import {
   Radio, 
   Workflow, 
   ArrowRight, 
-  CheckCircle2, 
-  ArrowUpRight 
+  CheckCircle2 
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -38,56 +37,56 @@ export default function SolutionsOverviewPage() {
   };
 
   return (
-    <main className="flex-1 pt-28 pb-20">
+    <main className="flex-1 pt-24 pb-20 bg-white">
       {/* Header */}
-      <section className="py-16 bg-radial-gradient border-b border-slate-900 text-center">
+      <section className="py-16 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
             Five Foundational Pillars
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
-            ENTERPRISE <span className="text-gradient-red">SOLUTIONS</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
+            Enterprise <span className="text-[#e61f23]">Solutions</span>
           </h1>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Comprehensive technology services engineered to eliminate operational bottlenecks, ensure compliance, and scale business operations.
           </p>
         </div>
       </section>
 
       {/* Solutions Cards List */}
-      <section className="py-20 bg-[#07090e]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {solutionsData.map((sol) => (
             <div
               key={sol.id}
-              className="p-8 sm:p-12 rounded-3xl bg-[#090d15] border border-slate-800 hover:border-slate-700 transition-all shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 hover:border-[#e61f23] transition-all shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="text-3xl font-mono font-black text-[#e61f23]">
                     {sol.index}
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800 text-slate-300">
+                  <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-gray-100 text-gray-700">
                     {sol.category}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/20">
+                  <div className="p-3 rounded-xl bg-red-50 border border-red-200">
                     {getIcon(sol.iconName)}
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-950">
                     {sol.title}
                   </h2>
                 </div>
 
-                <p className="text-slate-300 text-base leading-relaxed">
+                <p className="text-gray-600 text-base leading-relaxed">
                   {sol.description}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                   {sol.features.slice(0, 4).map((f, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                    <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
                       <CheckCircle2 className="w-4 h-4 text-[#e61f23] shrink-0" />
                       <span>{f}</span>
                     </div>
@@ -95,13 +94,13 @@ export default function SolutionsOverviewPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 bg-[#0e1320] border border-slate-800/80 rounded-2xl p-6 space-y-5">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <div className="lg:col-span-5 bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-5">
+                <div className="text-xs font-bold uppercase tracking-wider text-gray-700">
                   Target Use Cases
                 </div>
                 <div className="space-y-2">
                   {sol.useCases.slice(0, 3).map((uc, uIdx) => (
-                    <div key={uIdx} className="text-xs text-slate-300 p-2.5 rounded bg-slate-900/90 border border-slate-800">
+                    <div key={uIdx} className="text-xs text-gray-700 p-2.5 rounded bg-white border border-gray-200">
                       • {uc}
                     </div>
                   ))}

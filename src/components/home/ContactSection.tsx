@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { companyData } from "@/data/company";
 import { MapPin, Phone, Mail, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -35,63 +37,61 @@ export function ContactSection() {
     setSubmitError(null);
 
     try {
-      // Simulate enterprise secure API dispatch
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      // Simulate API dispatch
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setSubmitSuccess(true);
       reset();
     } catch {
-      setSubmitError("Failed to submit inquiry. Please try calling 8025 directly.");
+      setSubmitError("Failed to submit inquiry. Please call 8025 directly.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 bg-[#05070a] border-t border-slate-900 overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#e61f23]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider mb-4">
-            Direct Enterprise Engagement
+    <section id="contact" className="relative py-20 sm:py-28 bg-white border-t border-gray-200 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <ScrollReveal direction="up" duration={0.6}>
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-3">
+              Contact Us
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+              Get In <span className="text-[#e61f23]">Touch With Us</span>
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg mt-2">
+              Have a project, infrastructure requirement, or technology inquiry? Contact our team today.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            LET&apos;S BUILD SOMETHING <br />
-            <span className="text-gradient-red">GREAT TOGETHER</span>
-          </h2>
-          <p className="text-slate-400 text-base sm:text-lg mt-3">
-            Have a technology challenge, infrastructure requirement, or new digital project? Let&apos;s start a conversation.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Verified Coordinates & Map */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-[#080c14] border border-slate-800 space-y-6">
-              <h3 className="text-xl font-bold text-white">
-                Contact Coordinates
+          <ScrollReveal direction="left" delay={0.1} duration={0.7} className="lg:col-span-5 space-y-6">
+            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200 space-y-6">
+              <h3 className="text-xl font-bold text-gray-950">
+                Contact Information
               </h3>
 
               {/* Verified Contact Details */}
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Headquarters Address</div>
-                    <div className="text-sm font-semibold text-white mt-0.5">{companyData.address.full}</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Address</div>
+                    <div className="text-sm font-semibold text-gray-900 mt-0.5">{companyData.address.full}</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Enterprise Hotline</div>
-                    <div className="text-lg font-black text-white mt-0.5">
+                    <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Call Us</div>
+                    <div className="text-lg font-black text-gray-950 mt-0.5">
                       <a href={`tel:${companyData.contact.shortCode}`} className="hover:text-[#e61f23] transition-colors">
                         {companyData.contact.shortCode}
                       </a>
@@ -100,60 +100,65 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/25 text-[#e61f23] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Email</div>
-                    <div className="text-sm font-semibold text-white mt-0.5">
+                    <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Email Us</div>
+                    <div className="text-sm font-semibold text-gray-900 mt-0.5">
                       <a href={`mailto:${companyData.contact.email}`} className="hover:text-[#e61f23] transition-colors">
                         {companyData.contact.email}
                       </a>
                     </div>
                   </div>
                 </div>
+
+                <div className="pt-3 border-t border-gray-200/80 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-500">Social Channels</span>
+                  <SocialIcons />
+                </div>
               </div>
             </div>
 
-            {/* Embedded Google Map Container */}
-            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-[#080c14] h-64 relative shadow-lg">
+            {/* Embedded Google Map */}
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-64 relative shadow-sm">
               <iframe
                 title="Red Cloud Ethiopian IT Park Location"
                 src="https://maps.google.com/maps?q=Ethiopian%20IT%20Park,%20Addis%20Ababa&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)" }}
+                style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute bottom-2 left-2 right-2 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700 text-[11px] text-slate-300 flex items-center justify-between">
+              <div className="absolute bottom-2 left-2 right-2 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-gray-200 text-[11px] text-gray-700 flex items-center justify-between shadow-xs">
                 <span>Ethiopian IT Park Hub</span>
-                <span className="text-[#e61f23] font-semibold">Verified Location</span>
+                <span className="text-[#e61f23] font-bold">Verified Location</span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Right Column: React Hook Form + Zod Form */}
-          <div className="lg:col-span-7 bg-[#090d15] border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl">
-            <h3 className="text-2xl font-bold text-white mb-2">
-              Send an Enterprise Inquiry
+          {/* Right Column: Contact Form */}
+          <ScrollReveal direction="right" delay={0.2} duration={0.7} className="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 shadow-sm hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-gray-950 mb-1">
+              Send Message
             </h3>
-            <p className="text-sm text-slate-400 mb-8">
-              Fill in your specifications and our technical engineering team will get back to you promptly.
+            <p className="text-sm text-gray-600 mb-7">
+              Fill in the form below and our team will get back to you promptly.
             </p>
 
             {submitSuccess ? (
-              <div className="p-6 rounded-xl bg-emerald-950/40 border border-emerald-800/80 text-center space-y-3">
-                <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                <h4 className="text-lg font-bold text-white">Thank You for Reaching Out</h4>
-                <p className="text-sm text-slate-300 max-w-md mx-auto">
-                  Your message has been received by Red Cloud ICT Solutions PLC. Our team will review your inquiry and follow up shortly.
+              <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-center space-y-3">
+                <CheckCircle2 className="w-10 h-10 text-[#e61f23] mx-auto" />
+                <h4 className="text-lg font-bold text-gray-950">Thank You for Reaching Out</h4>
+                <p className="text-sm text-gray-600 max-w-md mx-auto">
+                  Your message has been received by Red Cloud ICT Solutions PLC. We will review your inquiry and follow up shortly.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitSuccess(false)}
-                  className="mt-4 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition-colors"
+                  className="mt-4 px-4 py-2 rounded-lg bg-[#e61f23] text-xs font-semibold text-white transition-colors"
                 >
                   Send Another Message
                 </button>
@@ -161,8 +166,8 @@ export function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
                 {submitError && (
-                  <div className="p-4 rounded-lg bg-red-950/40 border border-red-800 flex items-center gap-3 text-xs text-red-200">
-                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                  <div className="p-4 rounded-lg bg-red-50 border border-red-200 flex items-center gap-3 text-xs text-[#e61f23]">
+                    <AlertCircle className="w-4 h-4 text-[#e61f23] shrink-0" />
                     <span>{submitError}</span>
                   </div>
                 )}
@@ -170,85 +175,85 @@ export function ContactSection() {
                 {/* Name & Email Fields */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Full Name *
+                    <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                      Your Name *
                     </label>
                     <input
                       id="contact-name"
                       type="text"
                       {...register("name")}
-                      placeholder="e.g. Dawit Tadesse"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                      placeholder="Your Name"
+                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
                         errors.name
-                          ? "border-red-500 focus:ring-red-500/50"
-                          : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
+                          ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                          : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
                       }`}
                     />
                     {errors.name && (
-                      <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>
+                      <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Business Email *
+                    <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                      Your Email *
                     </label>
                     <input
                       id="contact-email"
                       type="email"
                       {...register("email")}
-                      placeholder="e.g. name@enterprise.com"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                      placeholder="Your Email"
+                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
                         errors.email
-                          ? "border-red-500 focus:ring-red-500/50"
-                          : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
+                          ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                          : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>
+                      <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Subject Field */}
                 <div>
-                  <label htmlFor="contact-subject" className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                    Subject / Solution of Interest *
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                    Subject *
                   </label>
                   <input
                     id="contact-subject"
                     type="text"
                     {...register("subject")}
-                    placeholder="e.g. Data Center Colocation & VISP Bandwidth Consultation"
-                    className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                    placeholder="Subject"
+                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
                       errors.subject
-                        ? "border-red-500 focus:ring-red-500/50"
-                        : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
+                        ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
                     }`}
                   />
                   {errors.subject && (
-                    <p className="text-xs text-red-400 mt-1">{errors.subject.message}</p>
+                    <p className="text-xs text-red-500 mt-1">{errors.subject.message}</p>
                   )}
                 </div>
 
                 {/* Message Field */}
                 <div>
-                  <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                    Project Message / Inquiry Details *
+                  <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                    Message *
                   </label>
                   <textarea
                     id="contact-message"
                     rows={4}
                     {...register("message")}
-                    placeholder="Describe your technical requirements, estimated user concurrency, or inquiry..."
-                    className={`w-full px-4 py-3 rounded-xl bg-[#0e1320] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                    placeholder="Message"
+                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
                       errors.message
-                        ? "border-red-500 focus:ring-red-500/50"
-                        : "border-slate-800 focus:border-[#e61f23] focus:ring-[#e61f23]/20"
+                        ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
                     }`}
                   />
                   {errors.message && (
-                    <p className="text-xs text-red-400 mt-1">{errors.message.message}</p>
+                    <p className="text-xs text-red-500 mt-1">{errors.message.message}</p>
                   )}
                 </div>
 
@@ -256,27 +261,23 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full py-4 rounded-xl text-base font-semibold tracking-wide flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full py-3.5 rounded-xl text-base font-semibold tracking-wide flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Transmitting Inquiry...</span>
+                      <span>Sending Message...</span>
                     </>
                   ) : (
                     <>
-                      <span>Talk to Red Cloud</span>
+                      <span>Send Message</span>
                       <Send className="w-4 h-4" />
                     </>
                   )}
                 </button>
-
-                <p className="text-[11px] text-slate-500 text-center pt-2">
-                  Privacy assurance: Your enterprise contact details are kept strictly confidential and used solely for business consultation.
-                </p>
               </form>
             )}
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

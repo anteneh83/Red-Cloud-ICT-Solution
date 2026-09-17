@@ -41,9 +41,9 @@ export const companyData: CompanyInfo = {
   name: "Red Cloud ICT Solutions PLC",
   shortName: "Red Cloud",
   tagline: "Take Your Business Online",
-  heroHeadline: "BUILDING THE DIGITAL INFRASTRUCTURE FOR TOMORROW",
+  heroHeadline: "Take Your Business Online",
   heroSubtitle:
-    "Technology, infrastructure and intelligent digital solutions that help businesses operate smarter, scale faster and transform with confidence.",
+    "Empowering businesses with cutting-edge technology solutions to drive efficiency, growth, and success.",
   established: 2022,
   about:
     "Welcome to Red Cloud ICT Solutions PLC, your trusted partner in digital transformation. Established in 2022, we are a leading force in the ICT industry, committed to innovation, quality, and customer satisfaction.",
@@ -55,13 +55,13 @@ export const companyData: CompanyInfo = {
     street: "Ethiopian IT Park, Goro Road to Tulu Dimtu",
     city: "Addis Ababa",
     country: "Ethiopia",
-    full: "Ethiopian IT Park, Goro Road to Tulu Dimtu, Addis Ababa, Ethiopia",
+    full: "Ethiopian IT Park, Goro Road to Tulu Dimtu",
   },
   contact: {
     shortCode: "8025",
     email: "admin@redcloud.com.et",
-    inquiriesEmail: "info@redcloud.com.et",
-    supportEmail: "support@redcloud.com.et",
+    inquiriesEmail: "admin@redcloud.com.et",
+    supportEmail: "admin@redcloud.com.et",
   },
   social: {
     linkedin: "https://www.linkedin.com/company/red-cloud-ict-solutions",
@@ -73,25 +73,24 @@ export const companyData: CompanyInfo = {
   },
   metrics: [
     {
-      label: "Foundation",
-      value: "2022",
-      description: "Established in Ethiopian ICT Park",
+      label: "Customers",
+      value: "6000+",
+      description: "Trusted clients across enterprise sectors",
     },
     {
-      label: "Core Pillars",
-      value: "5 Pillars",
-      description: "Cloud, FinTech, E-Commerce, VISP & Automation",
+      label: "Services",
+      value: "17",
+      description: "Specialized ICT & infrastructure services",
     },
     {
-      label: "Support Hotline",
-      value: "8025",
-      description: "Dedicated enterprise assistance line",
+      label: "Partners",
+      value: "16",
+      description: "Global & local technology partners",
     },
     {
-      label: "Active Clients",
-      value: "[Enterprise Scale]",
-      isPlaceholder: true,
-      description: "Official metrics to be updated upon release",
+      label: "Staffs",
+      value: "137",
+      description: "Dedicated engineering & operations staff",
     },
   ],
 };

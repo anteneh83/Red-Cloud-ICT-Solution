@@ -1,86 +1,76 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { companyData } from "@/data/company";
 import { AboutVideoPlayer } from "@/components/media/AboutVideoPlayer";
-import { ShieldCheck, Target, ArrowRight, Sparkles } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ShieldCheck, Target, ArrowRight } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-[#07090e] overflow-hidden">
-      {/* Background radial accent */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#e61f23]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+    <section id="about" className="relative py-20 sm:py-28 bg-white overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-stretch">
+          {/* Left Column: Video Controls Full Left Part (Autoplay, Loop, No Overlay) */}
+          <ScrollReveal direction="left" duration={0.8} className="flex">
+            <AboutVideoPlayer className="w-full h-full min-h-[440px] lg:min-h-[560px]" />
+          </ScrollReveal>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Corporate Video & Visual */}
-          <div className="lg:col-span-5 space-y-5">
-            {/* Video Player */}
-            <AboutVideoPlayer />
-
-            {/* Floating Badge */}
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <Sparkles className="w-4 h-4 text-[#e61f23]" />
-              <span className="text-xs text-slate-300">
-                Committed to quality, enterprise innovation & client trust since {companyData.established}.
-              </span>
-            </div>
-          </div>
-
-          {/* Right Column: Company Story, Mission & Commitment */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e61f23]/10 border border-[#e61f23]/30 text-xs font-semibold text-[#e61f23] uppercase tracking-wider">
-                Who We Are
+          {/* Right Column: Company Story, Mission & Commitment with Scroll Animation */}
+          <ScrollReveal direction="right" duration={0.8} className="flex flex-col justify-center space-y-6">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider">
+                About Us
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                Architecting Africa&apos;s Next Era of{" "}
-                <span className="text-gradient-red">Enterprise Technology</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+                Welcome to <span className="text-[#e61f23]">{companyData.name}</span>, your trusted partner in digital transformation.
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed pt-1">
                 {companyData.about}
               </p>
             </div>
 
-            {/* Structured Mission & Commitment Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+            {/* Structured Mission & Commitment Cards with Hover Elevation */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
               {/* Mission Card */}
-              <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-[#e61f23]/30 transition-colors space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-[#e61f23]/10 border border-[#e61f23]/20 flex items-center justify-center">
-                  <Target className="w-5 h-5 text-[#e61f23]" />
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 space-y-3 group">
+                <div className="w-11 h-11 rounded-xl bg-red-100 group-hover:bg-[#e61f23] transition-colors flex items-center justify-center">
+                  <Target className="w-5 h-5 text-[#e61f23] group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-base font-bold text-white uppercase tracking-wide">
+                <h3 className="text-base font-bold text-gray-900 uppercase tracking-wide">
                   Our Mission
                 </h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {companyData.mission}
                 </p>
               </div>
 
               {/* Commitment Card */}
-              <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-white/20 transition-colors space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5 text-white" />
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 space-y-3 group">
+                <div className="w-11 h-11 rounded-xl bg-red-100 group-hover:bg-[#e61f23] transition-colors flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-[#e61f23] group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-base font-bold text-white uppercase tracking-wide">
+                <h3 className="text-base font-bold text-gray-900 uppercase tracking-wide">
                   Our Commitment
                 </h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {companyData.commitment}
                 </p>
               </div>
             </div>
 
-            {/* Read More Link */}
+            {/* Learn More Link */}
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#e61f23] transition-colors group"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-[#e61f23] transition-colors group"
               >
-                <span>Discover More About Red Cloud History & Leadership</span>
+                <span>Read More About Our Ethiopian IT Park Operations</span>
                 <ArrowRight className="w-4 h-4 text-[#e61f23] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
