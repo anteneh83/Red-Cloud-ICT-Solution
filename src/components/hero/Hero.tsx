@@ -10,7 +10,7 @@ import { TypewriterTitle } from "@/components/ui/TypewriterTitle";
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
+    <section id="hero" className="scroll-mt-20 relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
       {/* Background Subtle Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-60" />
 

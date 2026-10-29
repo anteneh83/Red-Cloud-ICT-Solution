@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Logo } from "@/components/brand/Logo";
 import { navigationItems } from "@/data/navigation";
 import { companyData } from "@/data/company";
@@ -19,12 +20,37 @@ import {
   Workflow
 } from "lucide-react";
 
+// Section mapping for home page scroll tracking
+const homeSectionIds = [
+  { id: "hero", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "services", label: "Services" },
+  { id: "products", label: "Products" },
+  { id: "industries", label: "Industries" },
+  { id: "partners", label: "Partners" },
+  { id: "insights", label: "Insights" },
+  { id: "contact", label: "Contact" },
+];
+
+function getInitialSection(path: string): string {
+  if (path.startsWith("/solutions")) return "Services";
+  if (path.startsWith("/products")) return "Products";
+  if (path.startsWith("/industries")) return "Industries";
+  if (path.startsWith("/partners")) return "Partners";
+  if (path.startsWith("/insights")) return "Insights";
+  if (path.startsWith("/careers")) return "Careers";
+  if (path.startsWith("/contact")) return "Contact";
+  if (path.startsWith("/about")) return "About";
+  return "Home";
+}
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState<string>(() => getInitialSection(pathname));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +63,92 @@ export function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Track the active section dynamically as the user scrolls or navigates
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(getInitialSection(pathname));
+      return;
+    }
+
+    const checkActiveSection = () => {
+      // 1. If at the top of the page
+      if (window.scrollY < 120) {
+        setActiveSection("Home");
+        return;
+      }
+
+      // 2. If near bottom of the document
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      if (docHeight - scrollBottom < 80) {
+        setActiveSection("Contact");
+        return;
+      }
+
+      // 3. Find section currently intersecting the viewport
+      const offset = 180;
+      const currentPos = window.scrollY + offset;
+      let matched = "Home";
+
+      for (const { id, label } of homeSectionIds) {
+        const el = document.getElementById(id);
+        if (el && currentPos >= el.offsetTop) {
+          matched = label;
+        }
+      }
+      setActiveSection(matched);
+    };
+
+    checkActiveSection();
+    window.addEventListener("scroll", checkActiveSection, { passive: true });
+    window.addEventListener("resize", checkActiveSection, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", checkActiveSection);
+      window.removeEventListener("resize", checkActiveSection);
+    };
+  }, [pathname]);
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (href.startsWith("/#") && pathname === "/") {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", href);
+          const matched = homeSectionIds.find((s) => s.id === targetId);
+          if (matched) {
+            setActiveSection(matched.label);
+          }
+        }
+      }
+    },
+    [pathname]
+  );
+
+  const handleMobileNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      setMobileMenuOpen(false);
+      if (href.startsWith("/#") && pathname === "/") {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(null, "", href);
+            const matched = homeSectionIds.find((s) => s.id === targetId);
+            if (matched) {
+              setActiveSection(matched.label);
+            }
+          }, 100);
+        }
+      }
+    },
+    [pathname]
+  );
 
   // Close mobile menu and dropdowns on route change
   useEffect(() => {
@@ -90,29 +202,42 @@ export function Header() {
             {/* Desktop Navigation Links */}
             <nav className="hidden xl:flex items-center gap-1 2xl:gap-1.5">
               {navigationItems.map((item) => {
-                const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+                const isActive = activeSection === item.label;
 
                 if (item.children) {
                   return (
                     <div
                       key={item.label}
-                      className="relative"
+                      className="relative py-1"
                       onMouseEnter={() => setSolutionsOpen(true)}
                       onMouseLeave={() => setSolutionsOpen(false)}
                     >
-                      <button
-                        className={`whitespace-nowrap flex items-center gap-1 px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
+                      <Link
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={`relative whitespace-nowrap flex items-center gap-1 px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
                             ? "text-[#e61f23] font-semibold"
                             : "text-gray-700 hover:text-[#e61f23]"
                           }`}
                         aria-expanded={solutionsOpen}
                       >
-                        {item.label}
+                        <span>{item.label}</span>
                         <ChevronDown
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${solutionsOpen ? "rotate-180 text-[#e61f23]" : ""
                             }`}
                         />
-                      </button>
+                        {isActive && (
+                          <motion.span
+                            layoutId="activeHeaderUnderline"
+                            className="absolute bottom-0 left-2.5 right-2.5 h-[2px] bg-[#e61f23] rounded-full shadow-[0_1px_6px_rgba(230,31,35,0.4)] pointer-events-none"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }}
+                          />
+                        )}
+                      </Link>
 
                       {/* Solutions Dropdown Menu */}
                       {solutionsOpen && (
@@ -161,12 +286,24 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`whitespace-nowrap px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`relative whitespace-nowrap px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
                         ? "text-[#e61f23] font-semibold"
                         : "text-gray-700 hover:text-[#e61f23]"
                       }`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeHeaderUnderline"
+                        className="absolute bottom-0 left-2.5 right-2.5 h-[2px] bg-[#e61f23] rounded-full shadow-[0_1px_6px_rgba(230,31,35,0.4)] pointer-events-none"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
                   </Link>
                 );
               })}
@@ -235,7 +372,7 @@ export function Header() {
               {/* Primary Core Navigation */}
               <div className="space-y-1">
                 {navigationItems.slice(0, 5).map((item) => {
-                  const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+                  const isActive = activeSection === item.label;
 
                   if (item.children) {
                     return (
@@ -249,7 +386,7 @@ export function Header() {
                           type="button"
                           onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                           className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${isActive || mobileServicesOpen
-                              ? "text-[#e61f23] bg-red-50/80 shadow-xs"
+                              ? "text-[#e61f23] bg-red-50/80 shadow-xs border-l-2 border-[#e61f23]"
                               : "text-gray-800 hover:text-[#e61f23] hover:bg-gray-100/70"
                             }`}
                           aria-expanded={mobileServicesOpen}
@@ -300,9 +437,9 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => handleMobileNavClick(e, item.href)}
                       className={`block px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${isActive
-                          ? "text-[#e61f23] bg-red-50 font-bold"
+                          ? "text-[#e61f23] bg-red-50 font-bold border-l-2 border-[#e61f23]"
                           : "text-gray-800 hover:text-[#e61f23] hover:bg-gray-100/70"
                         }`}
                     >
@@ -319,19 +456,19 @@ export function Header() {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {navigationItems.slice(5).map((sec) => {
-                    const isSecActive = pathname === sec.href || (sec.href !== "/" && pathname.startsWith(sec.href));
+                    const isSecActive = activeSection === sec.label;
                     return (
                       <Link
                         key={sec.href}
                         href={sec.href}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={(e) => handleMobileNavClick(e, sec.href)}
                         className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${isSecActive
-                            ? "bg-red-50 text-[#e61f23] border-red-200"
+                            ? "bg-red-50 text-[#e61f23] border-[#e61f23] font-bold"
                             : "bg-white/70 text-gray-700 hover:bg-white hover:text-[#e61f23] hover:border-red-200 border-gray-200/80 shadow-2xs"
                           }`}
                       >
                         <span>{sec.label}</span>
-                        <ArrowRight className="w-3 h-3 text-gray-400" />
+                        <ArrowRight className={`w-3 h-3 ${isSecActive ? "text-[#e61f23]" : "text-gray-400"}`} />
                       </Link>
                     );
                   })}

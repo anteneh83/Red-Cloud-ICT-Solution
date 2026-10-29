@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function PartnersSection() {
   return (
-    <section id="partners" className="relative py-20 sm:py-28 bg-gray-50 border-t border-gray-200">
+    <section id="partners" className="scroll-mt-16 sm:scroll-mt-20 relative py-20 sm:py-28 bg-gray-50 border-t border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="up" duration={0.6}>
           <div className="text-center max-w-3xl mx-auto mb-14">

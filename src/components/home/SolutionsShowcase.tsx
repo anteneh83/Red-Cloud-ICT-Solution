@@ -5,15 +5,15 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { solutionsData } from "@/data/solutions";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { 
-  Server, 
-  ShoppingBag, 
-  CreditCard, 
-  Radio, 
-  Workflow, 
-  ArrowRight, 
-  CheckCircle2, 
-  ArrowUpRight 
+import {
+  Server,
+  ShoppingBag,
+  CreditCard,
+  Radio,
+  Workflow,
+  ArrowRight,
+  CheckCircle2,
+  ArrowUpRight
 } from "lucide-react";
 
 export function SolutionsShowcase() {
@@ -55,7 +55,7 @@ export function SolutionsShowcase() {
   };
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 bg-gray-50/70 border-t border-gray-200">
+    <section id="services" className="scroll-mt-16 sm:scroll-mt-20 relative py-24 sm:py-32 bg-gray-50/70 border-t border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Scroll Reveal */}
         <ScrollReveal direction="up">
@@ -83,7 +83,7 @@ export function SolutionsShowcase() {
         </ScrollReveal>
 
         {/* Interactive Showcase Grid with auto-switch pause on hover */}
-        <div 
+        <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -105,9 +105,6 @@ export function SolutionsShowcase() {
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-red-50 text-[#e61f23] border border-red-200">
                       {activeSolution.category}
-                    </span>
-                    <span className="hidden sm:inline-flex items-center text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-md">
-                      Auto 5s
                     </span>
                   </div>
                 </div>
@@ -177,36 +174,32 @@ export function SolutionsShowcase() {
                   onClick={() => {
                     setActiveSolutionId(sol.id);
                   }}
-                  className={`w-full text-left p-3.5 sm:p-4.5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
-                    isSelected
+                  className={`w-full text-left p-3.5 sm:p-4.5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isSelected
                       ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
                       : "bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5 hover:shadow-sm"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-4">
                     <span
-                      className={`text-sm font-mono font-bold ${
-                        isSelected ? "text-[#e61f23]" : "text-gray-400 group-hover:text-gray-600"
-                      }`}
+                      className={`text-sm font-mono font-bold ${isSelected ? "text-[#e61f23]" : "text-gray-400 group-hover:text-gray-600"
+                        }`}
                     >
                       {sol.index}
                     </span>
 
                     <div
-                      className={`p-2.5 rounded-xl transition-colors ${
-                        isSelected
+                      className={`p-2.5 rounded-xl transition-colors ${isSelected
                           ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
                           : "bg-gray-100 text-gray-600 group-hover:bg-red-50 group-hover:text-[#e61f23]"
-                      }`}
+                        }`}
                     >
                       {getSolutionIcon(sol.iconName, "w-5 h-5")}
                     </div>
 
                     <div>
                       <div
-                        className={`text-sm font-bold transition-colors ${
-                          isSelected ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
-                        }`}
+                        className={`text-sm font-bold transition-colors ${isSelected ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
+                          }`}
                       >
                         {sol.title}
                       </div>
@@ -217,11 +210,10 @@ export function SolutionsShowcase() {
                   </div>
 
                   <ArrowRight
-                    className={`w-4 h-4 transition-transform ${
-                      isSelected
+                    className={`w-4 h-4 transition-transform ${isSelected
                         ? "text-[#e61f23] translate-x-1"
                         : "text-gray-400 group-hover:text-gray-600 group-hover:translate-x-0.5"
-                    }`}
+                      }`}
                   />
 
                   {/* Auto-switch countdown progress bar */}

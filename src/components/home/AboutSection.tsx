@@ -9,7 +9,7 @@ import { ShieldCheck, Target, ArrowRight } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative py-16 sm:py-24 lg:py-28 bg-white overflow-hidden">
+    <section id="about" className="scroll-mt-16 sm:scroll-mt-20 relative py-16 sm:py-24 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-stretch">
           {/* Left Column: Video Controls Full Left Part (Autoplay, Loop, No Overlay) */}

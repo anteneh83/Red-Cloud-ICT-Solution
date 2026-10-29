@@ -39,7 +39,7 @@ export function TechEcosystem() {
         </ScrollReveal>
 
         {/* Stacked Interactive Hierarchy with auto-switch pause on hover */}
-        <div 
+        <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -53,27 +53,24 @@ export function TechEcosystem() {
                   <button
                     type="button"
                     onClick={() => setActiveLayerIndex(idx)}
-                    className={`w-full text-left p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
-                      isActive
+                    className={`w-full text-left p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isActive
                         ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
                         : "bg-gray-50 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 sm:gap-3.5">
                       <div
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold transition-colors shrink-0 ${
-                          isActive
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold transition-colors shrink-0 ${isActive
                             ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
                             : "bg-white border border-gray-200 text-gray-600 group-hover:text-gray-900"
-                        }`}
+                          }`}
                       >
                         0{idx + 1}
                       </div>
                       <div>
                         <div
-                          className={`text-xs sm:text-base font-bold transition-colors ${
-                            isActive ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
-                          }`}
+                          className={`text-xs sm:text-base font-bold transition-colors ${isActive ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
+                            }`}
                         >
                           {layer.title}
                         </div>
@@ -84,9 +81,8 @@ export function TechEcosystem() {
                     </div>
 
                     <span
-                      className={`text-[11px] sm:text-xs font-mono transition-colors font-bold shrink-0 ml-2 ${
-                        isActive ? "text-[#e61f23]" : "text-gray-400"
-                      }`}
+                      className={`text-[11px] sm:text-xs font-mono transition-colors font-bold shrink-0 ml-2 ${isActive ? "text-[#e61f23]" : "text-gray-400"
+                        }`}
                     >
                       {layer.level}
                     </span>
@@ -137,10 +133,6 @@ export function TechEcosystem() {
                       </h3>
                     </div>
                   </div>
-
-                  <span className="hidden sm:inline-flex items-center text-[11px] font-medium text-gray-500 bg-white border border-gray-200 px-2.5 py-1 rounded-md shadow-xs">
-                    Auto 5s
-                  </span>
                 </div>
 
                 <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed mb-5 sm:mb-6">

@@ -90,7 +90,7 @@ export function IndustriesSection() {
   };
 
   return (
-    <section id="industries" className="relative py-24 sm:py-32 bg-white border-t border-gray-200 overflow-hidden">
+    <section id="industries" className="scroll-mt-16 sm:scroll-mt-20 relative py-24 sm:py-32 bg-white border-t border-gray-200 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Human Navigation Buttons */}
         <ScrollReveal direction="up">

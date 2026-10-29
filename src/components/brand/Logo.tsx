@@ -22,7 +22,7 @@ export function Logo({ className = "", size = "md" }: LogoProps) {
     >
       <div className="relative flex items-center">
         <Image
-          src="/assets/logo.png"
+          src="/assets/logo-clean.png"
           alt="Red Cloud ICT Solutions PLC"
           width={260}
           height={75}

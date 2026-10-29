@@ -49,7 +49,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28 bg-white border-t border-gray-200 overflow-hidden">
+    <section id="contact" className="scroll-mt-16 sm:scroll-mt-20 relative py-20 sm:py-28 bg-white border-t border-gray-200 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="up" duration={0.6}>
           <div className="text-center max-w-3xl mx-auto mb-14">

@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function InsightsSection() {
   return (
-    <section id="insights" className="relative py-20 sm:py-28 bg-white border-t border-gray-200">
+    <section id="insights" className="scroll-mt-16 sm:scroll-mt-20 relative py-20 sm:py-28 bg-white border-t border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="up" duration={0.6}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
