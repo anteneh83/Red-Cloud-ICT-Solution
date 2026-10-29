@@ -20,7 +20,6 @@ export function SolutionsShowcase() {
   const [activeSolutionId, setActiveSolutionId] = useState<string>(solutionsData[0].id);
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Auto-switch solution every 5 seconds; paused when hovering
   useEffect(() => {
     if (isPaused) return;
 
@@ -57,7 +56,6 @@ export function SolutionsShowcase() {
   return (
     <section id="services" className="scroll-mt-16 sm:scroll-mt-20 relative py-24 sm:py-32 bg-gray-50/70 border-t border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header with Scroll Reveal */}
         <ScrollReveal direction="up">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
@@ -82,13 +80,11 @@ export function SolutionsShowcase() {
           </div>
         </ScrollReveal>
 
-        {/* Interactive Showcase Grid with auto-switch pause on hover */}
         <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Left Column: Active Solution Highlight Card with Animated Transition */}
           <div className="lg:col-span-7 bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/60 relative overflow-hidden transition-all duration-300">
             <AnimatePresence mode="wait">
               <motion.div
@@ -127,7 +123,6 @@ export function SolutionsShowcase() {
                   {activeSolution.description}
                 </p>
 
-                {/* Key Features List with interactive hover badges */}
                 <div className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-900">
                     Key Technical Capabilities
@@ -145,7 +140,6 @@ export function SolutionsShowcase() {
                   </div>
                 </div>
 
-                {/* Bottom Actions */}
                 <div className="pt-5 sm:pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <span className="text-xs text-gray-500 italic">
                     {activeSolution.specsStatusText}
@@ -163,7 +157,6 @@ export function SolutionsShowcase() {
             </AnimatePresence>
           </div>
 
-          {/* Right Column: Interactive Solution Selection Cards */}
           <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
             {solutionsData.map((sol) => {
               const isSelected = sol.id === activeSolutionId;
@@ -216,7 +209,6 @@ export function SolutionsShowcase() {
                       }`}
                   />
 
-                  {/* Auto-switch countdown progress bar */}
                   {isSelected && (
                     <motion.div
                       key={activeSolutionId}

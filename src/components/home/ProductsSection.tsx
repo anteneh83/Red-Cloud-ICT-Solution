@@ -34,7 +34,6 @@ export function ProductsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Product Cards Grid with Staggered Scroll Animation and Dynamic Hover */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {productsData.map((product, idx) => (
             <ScrollReveal key={product.id} delay={idx * 0.15} direction="up">
@@ -62,7 +61,6 @@ export function ProductsSection() {
                     {product.description}
                   </p>
 
-                  {/* Capabilities */}
                   <div className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 pt-4 border-t border-gray-100">
                     {product.capabilities.map((cap, cIdx) => (
                       <div key={cIdx} className="flex items-center gap-2.5 text-xs text-gray-700">
@@ -73,7 +71,6 @@ export function ProductsSection() {
                   </div>
                 </div>
 
-                {/* Status Note & Link */}
                 <div className="pt-4 sm:pt-5 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                   <span className="text-xs text-gray-500 italic">
                     {product.statusText}

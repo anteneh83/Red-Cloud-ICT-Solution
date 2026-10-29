@@ -70,7 +70,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
 
   return (
     <main className="flex-1 pt-24 pb-20 bg-white">
-      {/* Top Breadcrumb */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-2">
         <Link
           href="/solutions"
@@ -81,7 +80,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
         </Link>
       </div>
 
-      {/* Hero Section */}
       <section className="py-10 sm:py-14 bg-gray-50 border-b border-gray-200">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-4">
@@ -122,11 +120,9 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
         </div>
       </section>
 
-      {/* Overview & Architecture Section */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Left: Detailed Overview & Capabilities */}
             <div className="lg:col-span-7 space-y-6 sm:space-y-8">
               <div className="space-y-2.5 sm:space-y-3">
                 <h2 className="text-xl sm:text-3xl font-bold text-gray-950">
@@ -137,7 +133,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                 </p>
               </div>
 
-              {/* Capabilities */}
               <div className="space-y-3 sm:space-y-4 pt-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-950">
                   Technical Capabilities
@@ -161,9 +156,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
               </div>
             </div>
 
-            {/* Right: Architecture & Use Cases Sidebar */}
             <div className="lg:col-span-5 space-y-5 sm:space-y-6">
-              {/* Architecture Points */}
               <div className="p-5 sm:p-7 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2.5 text-gray-950 font-bold text-sm sm:text-base">
                   <Cpu className="w-5 h-5 text-[#e61f23]" />
@@ -182,7 +175,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                 </div>
               </div>
 
-              {/* Target Use Cases */}
               <div className="p-5 sm:p-7 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2.5 text-gray-950 font-bold text-sm sm:text-base">
                   <Zap className="w-5 h-5 text-[#e61f23]" />
@@ -200,7 +192,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                 </div>
               </div>
 
-              {/* Status Note Placeholder */}
               <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
                 <p className="text-xs text-gray-500 italic">
                   {solution.specsStatusText}
@@ -211,7 +202,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
         </div>
       </section>
 
-      {/* Enterprise Benefits */}
       <section className="py-14 sm:py-20 bg-gray-50 border-t border-gray-200">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
@@ -244,7 +234,6 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
             ))}
           </div>
 
-          {/* Solution Bottom CTA */}
           <div className="mt-12 sm:mt-16 p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-white border border-gray-200 text-center space-y-3 sm:space-y-4 shadow-sm">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-950">
               Ready to Deploy {solution.title}?

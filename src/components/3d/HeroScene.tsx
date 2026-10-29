@@ -9,7 +9,6 @@ export default function HeroScene() {
   const [hasWebGL, setHasWebGL] = useState(true);
 
   useEffect(() => {
-    // Check prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setHasWebGL(false);
       return;
@@ -18,7 +17,6 @@ export default function HeroScene() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Check WebGL support
     try {
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
@@ -34,7 +32,6 @@ export default function HeroScene() {
     let width = container.clientWidth || window.innerWidth;
     let height = container.clientHeight || 700;
 
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
     camera.position.z = 240;
@@ -44,7 +41,6 @@ export default function HeroScene() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     container.appendChild(renderer.domElement);
 
-    // Particle nodes (Cloud/Infrastructure shape)
     const particleCount = 80;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -55,7 +51,6 @@ export default function HeroScene() {
     const slateColor = new THREE.Color("#94A3B8");
 
     for (let i = 0; i < particleCount; i++) {
-      // Cloud-like ellipsoid distribution
       const u = Math.random();
       const v = Math.random();
       const theta = u * 2.0 * Math.PI;
@@ -63,8 +58,8 @@ export default function HeroScene() {
       const r = Math.cbrt(Math.random()) * 85;
 
       const sinPhi = Math.sin(phi);
-      const x = r * sinPhi * Math.cos(theta) * 1.5; // wider cloud
-      const y = r * sinPhi * Math.sin(theta) * 0.7; // flatter
+      const x = r * sinPhi * Math.cos(theta) * 1.5;
+      const y = r * sinPhi * Math.sin(theta) * 0.7;
       const z = r * Math.cos(phi) * 0.9;
 
       positions[i * 3] = x;
@@ -86,7 +81,6 @@ export default function HeroScene() {
     pointsGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     pointsGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
-    // Particle points material
     const pointsMaterial = new THREE.PointsMaterial({
       size: 4.5,
       vertexColors: true,
@@ -97,7 +91,6 @@ export default function HeroScene() {
     const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial);
     scene.add(pointsMesh);
 
-    // Network connection lines
     const lineIndices: number[] = [];
     const maxDist = 38;
 
@@ -123,7 +116,6 @@ export default function HeroScene() {
     const linesMesh = new THREE.LineSegments(linesGeometry, linesMaterial);
     scene.add(linesMesh);
 
-    // Central core accent ring
     const ringGeometry = new THREE.RingGeometry(38, 39, 48);
     const ringMaterial = new THREE.MeshBasicMaterial({
       color: 0xe50914,
@@ -135,7 +127,6 @@ export default function HeroScene() {
     ringMesh.rotation.x = Math.PI / 3;
     scene.add(ringMesh);
 
-    // Mouse movement interaction
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -150,7 +141,6 @@ export default function HeroScene() {
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // Handle Resize
     const handleResize = () => {
       if (!container) return;
       width = container.clientWidth;
@@ -161,7 +151,6 @@ export default function HeroScene() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Animation loop
     let animationFrameId: number;
     const animate = () => {
       targetX += (mouseX - targetX) * 0.05;
@@ -182,7 +171,6 @@ export default function HeroScene() {
 
     animate();
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);

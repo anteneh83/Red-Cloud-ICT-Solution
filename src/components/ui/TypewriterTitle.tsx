@@ -54,7 +54,6 @@ export function TypewriterTitle({
         {displayedCount > prefix.length && (
           <span className="relative inline-block text-[#e61f23]">
             {highlightPart}
-            {/* Smooth expansion of underline after typing is complete */}
             {isComplete && (
               <motion.span
                 initial={{ scaleX: 0 }}
@@ -65,7 +64,6 @@ export function TypewriterTitle({
             )}
           </span>
         )}
-        {/* Blinking Typewriter Cursor */}
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ repeat: Infinity, duration: 0.75, ease: "linear" }}

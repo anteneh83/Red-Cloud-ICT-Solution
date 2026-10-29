@@ -4,13 +4,13 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { industriesData } from "@/data/industries";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { 
-  Landmark, 
-  Store, 
-  Network, 
-  Building2, 
-  Briefcase, 
-  Zap, 
+import {
+  Landmark,
+  Store,
+  Network,
+  Building2,
+  Briefcase,
+  Zap,
   ArrowRight,
   ChevronLeft,
   ChevronRight
@@ -20,21 +20,18 @@ export function IndustriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [userInteracting, setUserInteracting] = useState(false);
 
-  // Duplicate items for seamless infinite horizontal scrolling
   const carouselItems = [...industriesData, ...industriesData];
 
-  // Slow continuous horizontal drift
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     let animationFrameId: number;
-    const speed = 0.7; // Gentle, slowly moving horizontal drift speed
+    const speed = 0.7;
 
     const step = () => {
       if (!userInteracting && el) {
         el.scrollLeft += speed;
-        // When halfway through the duplicated list, reset seamlessly to start
         if (el.scrollLeft >= el.scrollWidth / 2) {
           el.scrollLeft = 0;
         }
@@ -47,13 +44,12 @@ export function IndustriesSection() {
     return () => cancelAnimationFrame(animationFrameId);
   }, [userInteracting]);
 
-  // Human navigation button click handlers
   const handleScroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
 
     setUserInteracting(true);
-    const scrollAmount = 390; // Card width + gap
+    const scrollAmount = 390;
 
     if (direction === "left" && el.scrollLeft <= 10) {
       el.scrollLeft = el.scrollWidth / 2;
@@ -64,7 +60,6 @@ export function IndustriesSection() {
       behavior: "smooth",
     });
 
-    // Resume auto-scroll after a short delay
     setTimeout(() => {
       setUserInteracting(false);
     }, 2500);
@@ -92,7 +87,6 @@ export function IndustriesSection() {
   return (
     <section id="industries" className="scroll-mt-16 sm:scroll-mt-20 relative py-24 sm:py-32 bg-white border-t border-gray-200 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header with Human Navigation Buttons */}
         <ScrollReveal direction="up">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -107,10 +101,8 @@ export function IndustriesSection() {
               </p>
             </div>
 
-            {/* Controls: Human Navigation Arrows */}
             <div className="flex items-center gap-3 self-start md:self-end">
 
-              {/* Prev / Next Human Buttons */}
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
@@ -142,19 +134,15 @@ export function IndustriesSection() {
         </ScrollReveal>
       </div>
 
-      {/* Full-width Horizontal Sliding Container with Edge Gradient Masks */}
       <div className="relative w-full py-4 group/carousel">
-        {/* Left Incoming Edge Glow & Gradient Mask */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/85 to-transparent z-20 flex items-center pl-3 sm:pl-6">
           <div className="w-1 h-28 rounded-full bg-gradient-to-b from-transparent via-[#e61f23]/40 to-transparent shadow-sm" />
         </div>
 
-        {/* Right Outgoing Edge Glow & Gradient Mask */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white via-white/85 to-transparent z-20 flex items-center justify-end pr-3 sm:pr-6">
           <div className="w-1 h-28 rounded-full bg-gradient-to-b from-transparent via-[#e61f23]/40 to-transparent shadow-sm" />
         </div>
 
-        {/* Floating Left Human Navigation Button */}
         <button
           type="button"
           onClick={() => handleScroll("left")}
@@ -164,7 +152,6 @@ export function IndustriesSection() {
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        {/* Floating Right Human Navigation Button */}
         <button
           type="button"
           onClick={() => handleScroll("right")}
@@ -174,7 +161,6 @@ export function IndustriesSection() {
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Horizontal Scroll Track */}
         <div
           ref={scrollRef}
           className="flex gap-4 sm:gap-6 overflow-x-auto py-4 px-4 sm:px-12 scroll-smooth select-none cursor-grab active:cursor-grabbing no-scrollbar"
@@ -188,9 +174,6 @@ export function IndustriesSection() {
               key={`${item.id}-${idx}`}
               className="w-[280px] sm:w-[360px] md:w-[380px] shrink-0 relative bg-gray-50/70 border border-gray-200 hover:border-[#e61f23] rounded-2xl sm:rounded-3xl p-5 sm:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 flex flex-col justify-between group overflow-hidden"
             >
-              {/* Top red accent line revealing on hover */}
-              {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#e61f23] via-[#ff4d51] to-[#e61f23] opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
-
               <div>
                 <div className="w-13 h-13 rounded-2xl bg-red-100/70 border border-red-200 group-hover:bg-[#e61f23] flex items-center justify-center mb-5 transition-colors duration-300 shadow-xs">
                   {getIndustryIcon(item.iconName)}

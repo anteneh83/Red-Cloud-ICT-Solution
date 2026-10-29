@@ -30,7 +30,6 @@ export function CaseStudiesSection() {
           </div>
         </ScrollReveal>
 
-        {/* Case Study Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {caseStudiesData.map((cs, idx) => (
             <ScrollReveal key={cs.id} direction="up" delay={idx * 0.12} duration={0.6}>

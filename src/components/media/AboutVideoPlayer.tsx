@@ -16,14 +16,12 @@ export function AboutVideoPlayer({ className = "" }: AboutVideoPlayerProps) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       videoRef.current.play().catch(() => {
-        // Autoplay may be restricted until user interacts, but muted usually succeeds
       });
     }
   }, []);
 
   return (
     <div className={`relative w-full h-full flex items-center justify-center rounded-2xl overflow-hidden bg-white ${className}`}>
-      {/* Autoplay Looping Video without controls, text overlay, or cropping */}
       {!hasError ? (
         <video
           ref={videoRef}
@@ -37,10 +35,8 @@ export function AboutVideoPlayer({ className = "" }: AboutVideoPlayerProps) {
           onError={() => setHasError(true)}
         />
       ) : (
-        /* Clean white placeholder when video fails to load */
         <div className="w-full h-full min-h-[360px] bg-white flex items-center justify-center">
           <div className="relative flex items-center justify-center">
-            {/* Ambient pulsing ring */}
             <div className="w-24 h-24 rounded-full bg-[#e61f23]/10 animate-ping absolute" />
             <div className="w-20 h-20 rounded-full bg-red-50 flex items-center justify-center border border-[#e61f23]/30 relative z-10">
               <Video className="w-10 h-10 text-[#e61f23]" />

@@ -37,7 +37,6 @@ export function ContactSection() {
     setSubmitError(null);
 
     try {
-      // Simulate API dispatch
       await new Promise((resolve) => setTimeout(resolve, 800));
       setSubmitSuccess(true);
       reset();
@@ -66,14 +65,12 @@ export function ContactSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* Left Column: Verified Coordinates & Map */}
           <ScrollReveal direction="left" delay={0.1} duration={0.7} className="lg:col-span-5 space-y-6">
             <div className="p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-5 sm:space-y-6">
               <h3 className="text-lg sm:text-xl font-bold text-gray-950">
                 Contact Information
               </h3>
 
-              {/* Verified Contact Details */}
               <div className="space-y-4">
                 <div className="flex items-start gap-3.5 sm:gap-4">
                   <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
@@ -101,7 +98,6 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Embedded Google Map */}
             <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-56 sm:h-64 relative shadow-sm">
               <iframe
                 title="Red Cloud Ethiopian IT Park Location"
@@ -120,7 +116,6 @@ export function ContactSection() {
             </div>
           </ScrollReveal>
 
-          {/* Right Column: Contact Form */}
           <ScrollReveal direction="right" delay={0.2} duration={0.7} className="lg:col-span-7 bg-white border border-gray-200 rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300">
             <h3 className="text-2xl font-bold text-gray-950 mb-1">
               Send Message
@@ -153,7 +148,6 @@ export function ContactSection() {
                   </div>
                 )}
 
-                {/* Name & Email Fields */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
@@ -194,7 +188,6 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Subject Field */}
                 <div>
                   <label htmlFor="contact-subject" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
                     Subject *
@@ -214,7 +207,6 @@ export function ContactSection() {
                   )}
                 </div>
 
-                {/* Message Field */}
                 <div>
                   <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
                     Message *
@@ -234,7 +226,6 @@ export function ContactSection() {
                   )}
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}

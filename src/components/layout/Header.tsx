@@ -20,7 +20,6 @@ import {
   Workflow
 } from "lucide-react";
 
-// Section mapping for home page scroll tracking
 const homeSectionIds = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
@@ -64,7 +63,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Track the active section dynamically as the user scrolls or navigates
   useEffect(() => {
     if (pathname !== "/") {
       setActiveSection(getInitialSection(pathname));
@@ -72,13 +70,11 @@ export function Header() {
     }
 
     const checkActiveSection = () => {
-      // 1. If at the top of the page
       if (window.scrollY < 120) {
         setActiveSection("Home");
         return;
       }
 
-      // 2. If near bottom of the document
       const scrollBottom = window.innerHeight + window.scrollY;
       const docHeight = document.documentElement.scrollHeight;
       if (docHeight - scrollBottom < 80) {
@@ -86,7 +82,6 @@ export function Header() {
         return;
       }
 
-      // 3. Find section currently intersecting the viewport
       const offset = 180;
       const currentPos = window.scrollY + offset;
       let matched = "Home";
@@ -150,14 +145,12 @@ export function Header() {
     [pathname]
   );
 
-  // Close mobile menu and dropdowns on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setSolutionsOpen(false);
     setMobileServicesOpen(false);
   }, [pathname]);
 
-  // Prevent background scroll when mobile drawer is active
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -196,10 +189,8 @@ export function Header() {
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-between">
-            {/* Brand Logo (Static) */}
             <Logo />
 
-            {/* Desktop Navigation Links */}
             <nav className="hidden xl:flex items-center gap-1 2xl:gap-1.5">
               {navigationItems.map((item) => {
                 const isActive = activeSection === item.label;
@@ -239,7 +230,6 @@ export function Header() {
                         )}
                       </Link>
 
-                      {/* Solutions Dropdown Menu */}
                       {solutionsOpen && (
                         <div
                           className="absolute top-full left-0 w-80 sm:w-88 pt-2 z-50"
@@ -309,9 +299,7 @@ export function Header() {
               })}
             </nav>
 
-            {/* Right Action & Phone Hotline */}
             <div className="hidden xl:flex items-center gap-3 2xl:gap-4 shrink-0">
-              {/* 8025 Shortcode Pill */}
               <a
                 href={`tel:${companyData.contact.shortCode}`}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-[#e61f23]/50 text-xs font-semibold text-gray-800 transition-all whitespace-nowrap"
@@ -321,7 +309,6 @@ export function Header() {
                 <span>{companyData.contact.shortCode}</span>
               </a>
 
-              {/* Get Started CTA */}
               <Link
                 href="/#about"
                 className="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs 2xl:text-sm font-semibold tracking-wide whitespace-nowrap"
@@ -331,7 +318,6 @@ export function Header() {
               </Link>
             </div>
 
-            {/* Mobile & Tablet Hamburger Button & Hotline */}
             <div className="flex items-center gap-2 xl:hidden">
               <a
                 href={`tel:${companyData.contact.shortCode}`}
@@ -353,23 +339,19 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile & Tablet Translucent Floating Dropdown (Does not cover full screen) */}
       {mobileMenuOpen && (
         <>
-          {/* Subtle click-outside backdrop overlay */}
           <div
             className="fixed inset-0 top-16 sm:top-20 bg-black/20 backdrop-blur-xs z-30 xl:hidden transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
             aria-hidden="true"
           />
 
-          {/* Floating Translucent Menu Card */}
           <div
             className="fixed inset-x-3 sm:inset-x-6 top-[68px] sm:top-[84px] max-h-[calc(100dvh-5.5rem)] bg-white/92 backdrop-blur-xl z-40 xl:hidden overflow-y-auto rounded-2xl sm:rounded-3xl border border-gray-200/80 shadow-2xl shadow-black/15 transition-all"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div className="max-w-xl mx-auto px-4 sm:px-6 py-4 sm:py-5 space-y-4">
-              {/* Primary Core Navigation */}
               <div className="space-y-1">
                 {navigationItems.slice(0, 5).map((item) => {
                   const isActive = activeSection === item.label;
@@ -403,7 +385,6 @@ export function Header() {
                           />
                         </button>
 
-                        {/* Expandable Services Accordion (Minimizes when hover removed) */}
                         {mobileServicesOpen && (
                           <div className="mt-1 mb-2 ml-2 pl-3 border-l-2 border-red-200 space-y-1 bg-white/70 backdrop-blur-md rounded-r-xl py-1">
                             {item.children.map((child) => (
@@ -449,7 +430,6 @@ export function Header() {
                 })}
               </div>
 
-              {/* Secondary Company & Network 2-Column Grid */}
               <div className="pt-3 border-t border-gray-200/60">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-3 mb-2">
                   Company &amp; Resources

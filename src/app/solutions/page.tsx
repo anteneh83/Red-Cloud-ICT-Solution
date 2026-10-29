@@ -38,7 +38,6 @@ export default function SolutionsOverviewPage() {
 
   return (
     <main className="flex-1 pt-24 pb-20 bg-white">
-      {/* Header */}
       <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
@@ -53,7 +52,6 @@ export default function SolutionsOverviewPage() {
         </div>
       </section>
 
-      {/* Solutions Cards List */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           {solutionsData.map((sol) => (

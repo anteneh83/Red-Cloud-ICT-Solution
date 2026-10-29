@@ -11,14 +11,12 @@ export function Footer() {
     <footer className="relative bg-gray-50 border-t border-gray-200 pt-16 pb-12 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-200">
-          {/* Col 1: Brand & Contact Info */}
           <div className="lg:col-span-2 space-y-4">
             <Logo size="lg" />
             <p className="text-sm text-gray-600 max-w-sm leading-relaxed">
               Empowering businesses with cutting-edge technology solutions to drive efficiency, growth, and success. Trusted digital transformation partner established in 2022.
             </p>
 
-            {/* Preserved Direct Contact Details */}
             <div className="space-y-2.5 pt-2">
               <div className="flex items-start gap-3 text-xs text-gray-600">
                 <MapPin className="w-4 h-4 text-[#e61f23] shrink-0 mt-0.5" />
@@ -36,13 +34,11 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Social Channels with SVG icons */}
             <div className="pt-2">
               <SocialIcons />
             </div>
           </div>
 
-          {/* Col 2: Services / Solutions */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">
               Services
@@ -62,7 +58,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Company */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">
               Company
@@ -96,7 +91,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Platform & Sectors */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">
               Platforms & Sectors
@@ -126,7 +120,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright & legal */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-left">
           <div>
             © {new Date().getFullYear()} {companyData.name}. All Rights Reserved.

@@ -24,7 +24,6 @@ export function PartnersSection() {
           </div>
         </ScrollReveal>
 
-        {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {partnersData.map((category, idx) => (
             <ScrollReveal key={idx} direction="up" delay={idx * 0.12} duration={0.6}>
@@ -37,7 +36,6 @@ export function PartnersSection() {
                     {category.description}
                   </p>
 
-                  {/* Partner badges */}
                   <div className="space-y-2.5">
                     {category.partners.map((partner, pIdx) => (
                       <div
@@ -65,7 +63,6 @@ export function PartnersSection() {
           ))}
         </div>
 
-        {/* Partner CTA */}
         <ScrollReveal direction="up" delay={0.3} duration={0.6}>
           <div className="p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-[#e61f23] hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300">
             <div className="space-y-1 text-center sm:text-left">

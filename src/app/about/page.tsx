@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="flex-1 pt-24 pb-20 bg-white">
-      {/* Page Header */}
       <section className="relative py-12 sm:py-16 bg-gray-50 border-b border-gray-200">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
@@ -29,7 +28,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Narrative & History Section */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -52,7 +50,6 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-6 space-y-5">
-              {/* Mission */}
               <div id="mission" className="p-5 sm:p-7 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-3">
                 <div className="w-11 h-11 rounded-xl bg-red-100 flex items-center justify-center">
                   <Target className="w-6 h-6 text-[#e61f23]" />
@@ -65,7 +62,6 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Commitment */}
               <div className="p-5 sm:p-7 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-3">
                 <div className="w-11 h-11 rounded-xl bg-red-100 flex items-center justify-center">
                   <ShieldCheck className="w-6 h-6 text-[#e61f23]" />
@@ -82,7 +78,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Principles */}
       <section className="py-14 sm:py-20 bg-gray-50 border-t border-gray-200">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">

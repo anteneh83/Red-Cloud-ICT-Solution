@@ -13,7 +13,6 @@ export function TrustMetrics() {
           {companyData.metrics.map((metric, idx) => (
             <ScrollReveal key={idx} delay={idx * 0.1} direction="up">
               <div className="relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white border border-gray-200/90 hover:border-[#e61f23] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/8 group overflow-hidden flex flex-col justify-between h-full">
-                {/* Animated Incremental Number */}
                 <div className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#e61f23] mb-1 sm:mb-1.5 tracking-tight">
                   <AnimatedCounter value={metric.value} duration={1.8} />
                 </div>

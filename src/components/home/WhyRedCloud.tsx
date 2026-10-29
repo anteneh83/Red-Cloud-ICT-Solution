@@ -12,7 +12,6 @@ export function WhyRedCloud() {
     <section className="relative py-20 sm:py-28 bg-gray-50 border-t border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Bold Enterprise Statement */}
           <ScrollReveal direction="left" duration={0.7} className="lg:col-span-5 lg:sticky lg:top-28 space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider">
               The Enterprise Standard
@@ -48,7 +47,6 @@ export function WhyRedCloud() {
             </div>
           </ScrollReveal>
 
-          {/* Right Column: 5 Value Pillars Vertical List */}
           <div className="lg:col-span-7 space-y-3 sm:space-y-4">
             {whyRedCloudData.map((pillar, idx) => (
               <ScrollReveal key={pillar.number} direction="right" delay={idx * 0.1} duration={0.6}>

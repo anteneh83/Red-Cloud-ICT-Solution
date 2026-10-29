@@ -10,7 +10,6 @@ export function TechEcosystem() {
   const [activeLayerIndex, setActiveLayerIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Auto-switch layer every 5 seconds, paused when hovering
   useEffect(() => {
     if (isPaused) return;
 
@@ -38,13 +37,11 @@ export function TechEcosystem() {
           </div>
         </ScrollReveal>
 
-        {/* Stacked Interactive Hierarchy with auto-switch pause on hover */}
         <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Left Layer Stack */}
           <div className="lg:col-span-6 space-y-2.5 sm:space-y-3">
             {ecosystemLayers.map((layer, idx) => {
               const isActive = idx === activeLayerIndex;
@@ -87,7 +84,6 @@ export function TechEcosystem() {
                       {layer.level}
                     </span>
 
-                    {/* Auto-switch countdown progress bar */}
                     {isActive && (
                       <motion.div
                         key={activeLayerIndex}
@@ -109,7 +105,6 @@ export function TechEcosystem() {
             })}
           </div>
 
-          {/* Right Layer Detail Card */}
           <div className="lg:col-span-6 bg-gray-50/90 border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/50 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div

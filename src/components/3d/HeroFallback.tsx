@@ -22,7 +22,6 @@ export function HeroFallback() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Particle nodes
     const nodeCount = Math.min(Math.floor(width / 35), 45);
     const nodes: { x: number; y: number; vx: number; vy: number; radius: number; isRed: boolean }[] = [];
 
@@ -33,14 +32,13 @@ export function HeroFallback() {
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
         radius: Math.random() * 2 + 1,
-        isRed: Math.random() > 0.75, // 25% crimson nodes
+        isRed: Math.random() > 0.75,
       });
     }
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Update and draw connections
       for (let i = 0; i < nodes.length; i++) {
         const nodeA = nodes[i];
         nodeA.x += nodeA.vx;
@@ -66,7 +64,6 @@ export function HeroFallback() {
           }
         }
 
-        // Draw node
         ctx.beginPath();
         ctx.arc(nodeA.x, nodeA.y, nodeA.radius, 0, Math.PI * 2);
         ctx.fillStyle = nodeA.isRed ? "#e61f23" : "rgba(248, 250, 252, 0.8)";

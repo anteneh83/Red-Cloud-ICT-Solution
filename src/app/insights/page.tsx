@@ -31,7 +31,6 @@ export default function InsightsPage() {
 
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10 sm:mb-12">
             {categories.map((cat) => (
               <button
@@ -49,7 +48,6 @@ export default function InsightsPage() {
             ))}
           </div>
 
-          {/* Articles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredArticles.map((article) => (
               <article

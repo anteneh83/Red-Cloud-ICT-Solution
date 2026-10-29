@@ -17,7 +17,6 @@ export function AnimatedCounter({ value, className = "", duration = 2 }: Animate
   useEffect(() => {
     if (!isInView) return;
 
-    // Extract numeric part and any suffix (like + or letters)
     const match = value.match(/(\d+)(.*)/);
     if (!match) {
       setDisplayValue(value);

@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="flex-1 pt-24 pb-12 bg-white">
-      {/* Top Banner */}
       <section className="py-10 sm:py-14 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
@@ -27,7 +26,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Embedded Contact Component */}
       <ContactSection />
     </main>
   );
