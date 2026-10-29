@@ -65,17 +65,17 @@ export function ContactSection() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Verified Coordinates & Map */}
           <ScrollReveal direction="left" delay={0.1} duration={0.7} className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200 space-y-6">
-              <h3 className="text-xl font-bold text-gray-950">
+            <div className="p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 space-y-5 sm:space-y-6">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-950">
                 Contact Information
               </h3>
 
               {/* Verified Contact Details */}
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3.5 sm:gap-4">
                   <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
@@ -85,7 +85,7 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3.5 sm:gap-4">
                   <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
@@ -98,30 +98,11 @@ export function ContactSection() {
                     </div>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-red-100 text-[#e61f23] shrink-0">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Email Us</div>
-                    <div className="text-sm font-semibold text-gray-900 mt-0.5">
-                      <a href={`mailto:${companyData.contact.email}`} className="hover:text-[#e61f23] transition-colors">
-                        {companyData.contact.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-gray-200/80 flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-gray-500">Social Channels</span>
-                  <SocialIcons />
-                </div>
               </div>
             </div>
 
             {/* Embedded Google Map */}
-            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-64 relative shadow-sm">
+            <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-56 sm:h-64 relative shadow-sm">
               <iframe
                 title="Red Cloud Ethiopian IT Park Location"
                 src="https://maps.google.com/maps?q=Ethiopian%20IT%20Park,%20Addis%20Ababa&t=&z=14&ie=UTF8&iwloc=&output=embed"
@@ -140,7 +121,7 @@ export function ContactSection() {
           </ScrollReveal>
 
           {/* Right Column: Contact Form */}
-          <ScrollReveal direction="right" delay={0.2} duration={0.7} className="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 shadow-sm hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300">
+          <ScrollReveal direction="right" delay={0.2} duration={0.7} className="lg:col-span-7 bg-white border border-gray-200 rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300">
             <h3 className="text-2xl font-bold text-gray-950 mb-1">
               Send Message
             </h3>
@@ -183,11 +164,10 @@ export function ContactSection() {
                       type="text"
                       {...register("name")}
                       placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
-                        errors.name
+                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${errors.name
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
                           : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
-                      }`}
+                        }`}
                     />
                     {errors.name && (
                       <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
@@ -203,11 +183,10 @@ export function ContactSection() {
                       type="email"
                       {...register("email")}
                       placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
-                        errors.email
+                      className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${errors.email
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
                           : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
-                      }`}
+                        }`}
                     />
                     {errors.email && (
                       <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
@@ -225,11 +204,10 @@ export function ContactSection() {
                     type="text"
                     {...register("subject")}
                     placeholder="Subject"
-                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
-                      errors.subject
+                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${errors.subject
                         ? "border-red-500 focus:ring-1 focus:ring-red-500"
                         : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
-                    }`}
+                      }`}
                   />
                   {errors.subject && (
                     <p className="text-xs text-red-500 mt-1">{errors.subject.message}</p>
@@ -246,11 +224,10 @@ export function ContactSection() {
                     rows={4}
                     {...register("message")}
                     placeholder="Message"
-                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${
-                      errors.message
+                    className={`w-full px-4 py-3 rounded-xl bg-white border text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-all ${errors.message
                         ? "border-red-500 focus:ring-1 focus:ring-red-500"
                         : "border-gray-300 focus:border-[#e61f23] focus:ring-1 focus:ring-[#e61f23]"
-                    }`}
+                      }`}
                   />
                   {errors.message && (
                     <p className="text-xs text-red-500 mt-1">{errors.message.message}</p>

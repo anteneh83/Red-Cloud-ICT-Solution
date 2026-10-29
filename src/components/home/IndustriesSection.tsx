@@ -158,7 +158,7 @@ export function IndustriesSection() {
         <button
           type="button"
           onClick={() => handleScroll("left")}
-          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-lg shadow-gray-200/80 hover:shadow-red-500/20 flex items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm opacity-80 group-hover/carousel:opacity-100"
+          className="hidden sm:flex absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-lg shadow-gray-200/80 hover:shadow-red-500/20 items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm opacity-80 group-hover/carousel:opacity-100"
           aria-label="Slide previous"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -168,7 +168,7 @@ export function IndustriesSection() {
         <button
           type="button"
           onClick={() => handleScroll("right")}
-          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-lg shadow-gray-200/80 hover:shadow-red-500/20 flex items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm opacity-80 group-hover/carousel:opacity-100"
+          className="hidden sm:flex absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/95 border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-lg shadow-gray-200/80 hover:shadow-red-500/20 items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm opacity-80 group-hover/carousel:opacity-100"
           aria-label="Slide next"
         >
           <ChevronRight className="w-5 h-5" />
@@ -177,7 +177,7 @@ export function IndustriesSection() {
         {/* Horizontal Scroll Track */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto py-4 px-6 sm:px-12 scroll-smooth select-none cursor-grab active:cursor-grabbing no-scrollbar"
+          className="flex gap-4 sm:gap-6 overflow-x-auto py-4 px-4 sm:px-12 scroll-smooth select-none cursor-grab active:cursor-grabbing no-scrollbar"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -186,10 +186,10 @@ export function IndustriesSection() {
           {carouselItems.map((item, idx) => (
             <div
               key={`${item.id}-${idx}`}
-              className="w-[320px] sm:w-[380px] shrink-0 relative bg-gray-50/70 border border-gray-200 hover:border-[#e61f23] rounded-3xl p-7 sm:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 flex flex-col justify-between group overflow-hidden"
+              className="w-[280px] sm:w-[360px] md:w-[380px] shrink-0 relative bg-gray-50/70 border border-gray-200 hover:border-[#e61f23] rounded-2xl sm:rounded-3xl p-5 sm:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 flex flex-col justify-between group overflow-hidden"
             >
               {/* Top red accent line revealing on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#e61f23] via-[#ff4d51] to-[#e61f23] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#e61f23] via-[#ff4d51] to-[#e61f23] opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
 
               <div>
                 <div className="w-13 h-13 rounded-2xl bg-red-100/70 border border-red-200 group-hover:bg-[#e61f23] flex items-center justify-center mb-5 transition-colors duration-300 shadow-xs">

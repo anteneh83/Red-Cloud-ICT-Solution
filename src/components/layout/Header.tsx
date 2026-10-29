@@ -6,23 +6,24 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/Logo";
 import { navigationItems } from "@/data/navigation";
 import { companyData } from "@/data/company";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  PhoneCall, 
-  ArrowRight, 
-  Server, 
-  ShoppingBag, 
-  CreditCard, 
-  Radio, 
-  Workflow 
+import {
+  Menu,
+  X,
+  ChevronDown,
+  PhoneCall,
+  ArrowRight,
+  Server,
+  ShoppingBag,
+  CreditCard,
+  Radio,
+  Workflow
 } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,10 +38,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close mobile menu and dropdowns on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setSolutionsOpen(false);
+    setMobileServicesOpen(false);
   }, [pathname]);
 
   // Prevent background scroll when mobile drawer is active
@@ -73,173 +75,84 @@ export function Header() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm"
-          : "bg-white/90 backdrop-blur-sm border-b border-gray-100 py-4"
-      }`}
-    >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Brand Logo (Static) */}
-          <Logo />
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 h-16 sm:h-20 flex items-center transition-all duration-300 ${isScrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+            : "bg-white/95 backdrop-blur-sm border-b border-gray-100"
+          }`}
+      >
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between">
+            {/* Brand Logo (Static) */}
+            <Logo />
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navigationItems.map((item) => {
-              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
-
-              if (item.children) {
-                return (
-                  <div
-                    key={item.label}
-                    className="relative"
-                    onMouseEnter={() => setSolutionsOpen(true)}
-                    onMouseLeave={() => setSolutionsOpen(false)}
-                  >
-                    <button
-                      className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                        isActive
-                          ? "text-[#e61f23] font-semibold"
-                          : "text-gray-700 hover:text-[#e61f23]"
-                      }`}
-                      aria-expanded={solutionsOpen}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          solutionsOpen ? "rotate-180 text-[#e61f23]" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {/* Solutions Dropdown Menu */}
-                    {solutionsOpen && (
-                      <div className="absolute top-full left-0 w-84 pt-2 z-50">
-                        <div className="bg-white border border-gray-200 rounded-xl p-2.5 shadow-xl space-y-1">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className="group flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all"
-                            >
-                              <div className="p-2 rounded-md bg-gray-100 group-hover:bg-[#e61f23]/10 transition-colors mt-0.5">
-                                {getSolutionIcon(child.iconName)}
-                              </div>
-                              <div>
-                                <div className="text-sm font-medium text-gray-900 group-hover:text-[#e61f23] transition-colors">
-                                  {child.label}
-                                </div>
-                                <div className="text-xs text-gray-500 line-clamp-1 mt-0.5">
-                                  {child.description}
-                                </div>
-                              </div>
-                            </Link>
-                          ))}
-                          <div className="pt-2 mt-1 border-t border-gray-100">
-                            <Link
-                              href="/solutions"
-                              className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-gray-700 hover:text-[#e61f23] hover:bg-gray-50 rounded-md transition-colors"
-                            >
-                              <span>Explore All 5 Core Solutions</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-[#e61f23]" />
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                    isActive
-                      ? "text-[#e61f23] font-semibold"
-                      : "text-gray-700 hover:text-[#e61f23]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Action & Phone Hotline */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* 8025 Shortcode Pill */}
-            <a
-              href={`tel:${companyData.contact.shortCode}`}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-[#e61f23]/50 text-xs font-semibold text-gray-800 transition-all"
-              title="Call Red Cloud Enterprise Hotline"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-[#e61f23]" />
-              <span>{companyData.contact.shortCode}</span>
-            </a>
-
-            {/* Get Started CTA */}
-            <Link
-              href="/#about"
-              className="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold tracking-wide"
-            >
-              <span>Get Started</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <a
-              href={`tel:${companyData.contact.shortCode}`}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 border border-gray-200 text-xs font-medium text-gray-800 mr-1"
-            >
-              <PhoneCall className="w-3 h-3 text-[#e61f23]" />
-              <span>{companyData.contact.shortCode}</span>
-            </a>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#e61f23]"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[65px] bg-white/98 backdrop-blur-xl z-40 lg:hidden overflow-y-auto border-t border-gray-200 shadow-lg">
-          <div className="px-5 py-6 space-y-4">
-            <div className="space-y-1">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden xl:flex items-center gap-1 2xl:gap-1.5">
               {navigationItems.map((item) => {
                 const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
 
                 if (item.children) {
                   return (
-                    <div key={item.label} className="py-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-gray-500 px-3 mb-2">
+                    <div
+                      key={item.label}
+                      className="relative"
+                      onMouseEnter={() => setSolutionsOpen(true)}
+                      onMouseLeave={() => setSolutionsOpen(false)}
+                    >
+                      <button
+                        className={`whitespace-nowrap flex items-center gap-1 px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
+                            ? "text-[#e61f23] font-semibold"
+                            : "text-gray-700 hover:text-[#e61f23]"
+                          }`}
+                        aria-expanded={solutionsOpen}
+                      >
                         {item.label}
-                      </div>
-                      <div className="space-y-1 pl-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-[#e61f23] hover:bg-gray-50"
-                          >
-                            <div className="p-1.5 rounded bg-gray-100">
-                              {getSolutionIcon(child.iconName)}
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${solutionsOpen ? "rotate-180 text-[#e61f23]" : ""
+                            }`}
+                        />
+                      </button>
+
+                      {/* Solutions Dropdown Menu */}
+                      {solutionsOpen && (
+                        <div
+                          className="absolute top-full left-0 w-80 sm:w-88 pt-2 z-50"
+                          onMouseEnter={() => setSolutionsOpen(true)}
+                          onMouseLeave={() => setSolutionsOpen(false)}
+                        >
+                          <div className="bg-white/95 backdrop-blur-xl border border-gray-200/90 rounded-2xl p-2.5 shadow-2xl space-y-1">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="group flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all"
+                              >
+                                <div className="p-2 rounded-md bg-gray-100 group-hover:bg-[#e61f23]/10 transition-colors mt-0.5">
+                                  {getSolutionIcon(child.iconName)}
+                                </div>
+                                <div>
+                                  <div className="text-sm font-medium text-gray-900 group-hover:text-[#e61f23] transition-colors">
+                                    {child.label}
+                                  </div>
+                                  <div className="text-xs text-gray-500 line-clamp-1 mt-0.5">
+                                    {child.description}
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
+                            <div className="pt-2 mt-1 border-t border-gray-100">
+                              <Link
+                                href="/solutions"
+                                className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-gray-700 hover:text-[#e61f23] hover:bg-gray-50 rounded-md transition-colors"
+                              >
+                                <span>Explore All 5 Core Solutions</span>
+                                <ArrowRight className="w-3.5 h-3.5 text-[#e61f23]" />
+                              </Link>
                             </div>
-                            <span className="font-medium">{child.label}</span>
-                          </Link>
-                        ))}
-                      </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 }
@@ -248,33 +161,186 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
-                      isActive
-                        ? "text-[#e61f23] bg-red-50 font-semibold"
-                        : "text-gray-700 hover:text-[#e61f23] hover:bg-gray-50"
-                    }`}
+                    className={`whitespace-nowrap px-2.5 2xl:px-3 py-2 text-xs 2xl:text-sm font-medium rounded-md transition-colors ${isActive
+                        ? "text-[#e61f23] font-semibold"
+                        : "text-gray-700 hover:text-[#e61f23]"
+                      }`}
                   >
                     {item.label}
                   </Link>
                 );
               })}
-            </div>
+            </nav>
 
-            <div className="pt-6 border-t border-gray-200 space-y-3">
+            {/* Right Action & Phone Hotline */}
+            <div className="hidden xl:flex items-center gap-3 2xl:gap-4 shrink-0">
+              {/* 8025 Shortcode Pill */}
+              <a
+                href={`tel:${companyData.contact.shortCode}`}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-[#e61f23]/50 text-xs font-semibold text-gray-800 transition-all whitespace-nowrap"
+                title="Call Red Cloud Enterprise Hotline"
+              >
+                <PhoneCall className="w-3.5 h-3.5 text-[#e61f23]" />
+                <span>{companyData.contact.shortCode}</span>
+              </a>
+
+              {/* Get Started CTA */}
               <Link
                 href="/#about"
-                className="btn-primary w-full flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold"
+                className="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs 2xl:text-sm font-semibold tracking-wide whitespace-nowrap"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <div className="text-center text-xs text-gray-500 pt-2">
-                Ethiopian IT Park, Goro Road to Tulu Dimtu • Hotline: 8025
-              </div>
+            </div>
+
+            {/* Mobile & Tablet Hamburger Button & Hotline */}
+            <div className="flex items-center gap-2 xl:hidden">
+              <a
+                href={`tel:${companyData.contact.shortCode}`}
+                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 border border-gray-200 text-xs font-medium text-gray-800 mr-1"
+              >
+                <PhoneCall className="w-3 h-3 text-[#e61f23]" />
+                <span>{companyData.contact.shortCode}</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#e61f23]"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
         </div>
+      </header>
+
+      {/* Mobile & Tablet Translucent Floating Dropdown (Does not cover full screen) */}
+      {mobileMenuOpen && (
+        <>
+          {/* Subtle click-outside backdrop overlay */}
+          <div
+            className="fixed inset-0 top-16 sm:top-20 bg-black/20 backdrop-blur-xs z-30 xl:hidden transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Floating Translucent Menu Card */}
+          <div
+            className="fixed inset-x-3 sm:inset-x-6 top-[68px] sm:top-[84px] max-h-[calc(100dvh-5.5rem)] bg-white/92 backdrop-blur-xl z-40 xl:hidden overflow-y-auto rounded-2xl sm:rounded-3xl border border-gray-200/80 shadow-2xl shadow-black/15 transition-all"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            <div className="max-w-xl mx-auto px-4 sm:px-6 py-4 sm:py-5 space-y-4">
+              {/* Primary Core Navigation */}
+              <div className="space-y-1">
+                {navigationItems.slice(0, 5).map((item) => {
+                  const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+
+                  if (item.children) {
+                    return (
+                      <div
+                        key={item.label}
+                        className="rounded-xl overflow-hidden transition-all"
+                        onMouseEnter={() => setMobileServicesOpen(true)}
+                        onMouseLeave={() => setMobileServicesOpen(false)}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                          className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${isActive || mobileServicesOpen
+                              ? "text-[#e61f23] bg-red-50/80 shadow-xs"
+                              : "text-gray-800 hover:text-[#e61f23] hover:bg-gray-100/70"
+                            }`}
+                          aria-expanded={mobileServicesOpen}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span>{item.label}</span>
+                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-red-100 text-[#e61f23]">
+                              5 Solutions
+                            </span>
+                          </div>
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform duration-200 text-gray-400 ${mobileServicesOpen ? "rotate-180 text-[#e61f23]" : ""
+                              }`}
+                          />
+                        </button>
+
+                        {/* Expandable Services Accordion (Minimizes when hover removed) */}
+                        {mobileServicesOpen && (
+                          <div className="mt-1 mb-2 ml-2 pl-3 border-l-2 border-red-200 space-y-1 bg-white/70 backdrop-blur-md rounded-r-xl py-1">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-xs font-medium text-gray-700 hover:text-[#e61f23] hover:bg-red-50/60 transition-colors"
+                              >
+                                <div className="p-1.5 rounded-md bg-red-50 text-[#e61f23] shrink-0">
+                                  {getSolutionIcon(child.iconName)}
+                                </div>
+                                <span className="font-medium text-gray-900">{child.label}</span>
+                              </Link>
+                            ))}
+                            <Link
+                              href="/solutions"
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center justify-between px-2.5 py-1.5 text-xs font-bold text-[#e61f23] hover:underline"
+                            >
+                              <span>Explore All 5 Core Solutions</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`block px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${isActive
+                          ? "text-[#e61f23] bg-red-50 font-bold"
+                          : "text-gray-800 hover:text-[#e61f23] hover:bg-gray-100/70"
+                        }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Secondary Company & Network 2-Column Grid */}
+              <div className="pt-3 border-t border-gray-200/60">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-3 mb-2">
+                  Company &amp; Resources
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {navigationItems.slice(5).map((sec) => {
+                    const isSecActive = pathname === sec.href || (sec.href !== "/" && pathname.startsWith(sec.href));
+                    return (
+                      <Link
+                        key={sec.href}
+                        href={sec.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${isSecActive
+                            ? "bg-red-50 text-[#e61f23] border-red-200"
+                            : "bg-white/70 text-gray-700 hover:bg-white hover:text-[#e61f23] hover:border-red-200 border-gray-200/80 shadow-2xs"
+                          }`}
+                      >
+                        <span>{sec.label}</span>
+                        <ArrowRight className="w-3 h-3 text-gray-400" />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
-    </header>
+    </>
   );
 }

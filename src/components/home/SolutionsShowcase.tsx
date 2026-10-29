@@ -89,10 +89,7 @@ export function SolutionsShowcase() {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Left Column: Active Solution Highlight Card with Animated Transition */}
-          <div className="lg:col-span-7 bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 shadow-xl shadow-gray-200/60 relative overflow-hidden transition-all duration-300">
-            {/* Top red accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#e61f23] via-[#ff4d51] to-[#e61f23]" />
-
+          <div className="lg:col-span-7 bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/60 relative overflow-hidden transition-all duration-300">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSolution.id}
@@ -101,12 +98,12 @@ export function SolutionsShowcase() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <span className="text-4xl font-black text-[#e61f23] font-mono">
+                <div className="flex items-center justify-between gap-4 mb-5 sm:mb-6">
+                  <span className="text-3xl sm:text-4xl font-black text-[#e61f23] font-mono">
                     {activeSolution.index}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-red-50 text-[#e61f23] border border-red-200">
+                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-red-50 text-[#e61f23] border border-red-200">
                       {activeSolution.category}
                     </span>
                     <span className="hidden sm:inline-flex items-center text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-md">
@@ -115,30 +112,30 @@ export function SolutionsShowcase() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-[#e61f23]">
-                    {getSolutionIcon(activeSolution.iconName, "w-8 h-8")}
+                <div className="flex items-center gap-3.5 sm:gap-4 mb-4 sm:mb-5">
+                  <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-red-50 border border-red-200 text-[#e61f23] shrink-0">
+                    {getSolutionIcon(activeSolution.iconName, "w-6 h-6 sm:w-8 sm:h-8")}
                   </div>
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-950">
                       {activeSolution.title}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-0.5">
+                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                       {activeSolution.summary}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8">
+                <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed mb-6 sm:mb-8">
                   {activeSolution.description}
                 </p>
 
                 {/* Key Features List with interactive hover badges */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-900">
                     Key Technical Capabilities
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                     {activeSolution.features.map((feature, idx) => (
                       <div
                         key={idx}
@@ -152,14 +149,14 @@ export function SolutionsShowcase() {
                 </div>
 
                 {/* Bottom Actions */}
-                <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="pt-5 sm:pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <span className="text-xs text-gray-500 italic">
                     {activeSolution.specsStatusText}
                   </span>
 
                   <Link
                     href={`/solutions/${activeSolution.slug}`}
-                    className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold tracking-wide shadow-md shadow-red-500/20 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-0.5 transition-all"
+                    className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wide shadow-md shadow-red-500/20 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-0.5 transition-all w-full sm:w-auto"
                   >
                     <span>Full Specification</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -170,7 +167,7 @@ export function SolutionsShowcase() {
           </div>
 
           {/* Right Column: Interactive Solution Selection Cards */}
-          <div className="lg:col-span-5 space-y-3">
+          <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
             {solutionsData.map((sol) => {
               const isSelected = sol.id === activeSolutionId;
               return (
@@ -180,7 +177,7 @@ export function SolutionsShowcase() {
                   onClick={() => {
                     setActiveSolutionId(sol.id);
                   }}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
+                  className={`w-full text-left p-3.5 sm:p-4.5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
                     isSelected
                       ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
                       : "bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5 hover:shadow-sm"

@@ -127,11 +127,11 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright & legal */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-left">
           <div>
             © {new Date().getFullYear()} {companyData.name}. All Rights Reserved.
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap justify-center sm:justify-end items-center gap-4 sm:gap-6">
             <span className="hover:text-gray-700 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-gray-700 cursor-pointer">Terms of Service</span>
             <span className="text-gray-400">Ethiopian IT Park</span>

@@ -35,10 +35,10 @@ export function InsightsSection() {
         </ScrollReveal>
 
         {/* 3 Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {insightsData.slice(0, 3).map((article, idx) => (
             <ScrollReveal key={article.id} direction="up" delay={idx * 0.12} duration={0.6}>
-              <article className="h-full bg-gray-50 border border-gray-200 hover:border-[#e61f23] rounded-2xl p-7 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
+              <article className="h-full bg-gray-50 border border-gray-200 hover:border-[#e61f23] rounded-xl sm:rounded-2xl p-5 sm:p-7 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="text-xs font-mono font-bold uppercase text-[#e61f23] px-2.5 py-0.5 rounded bg-red-50">

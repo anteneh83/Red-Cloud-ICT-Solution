@@ -45,7 +45,7 @@ export function TechEcosystem() {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Left Layer Stack */}
-          <div className="lg:col-span-6 space-y-3">
+          <div className="lg:col-span-6 space-y-2.5 sm:space-y-3">
             {ecosystemLayers.map((layer, idx) => {
               const isActive = idx === activeLayerIndex;
               return (
@@ -53,15 +53,15 @@ export function TechEcosystem() {
                   <button
                     type="button"
                     onClick={() => setActiveLayerIndex(idx)}
-                    className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
+                    className={`w-full text-left p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${
                       isActive
                         ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
                         : "bg-gray-50 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5"
                     }`}
                   >
-                    <div className="flex items-center gap-3.5">
+                    <div className="flex items-center gap-3 sm:gap-3.5">
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold transition-colors ${
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold transition-colors shrink-0 ${
                           isActive
                             ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
                             : "bg-white border border-gray-200 text-gray-600 group-hover:text-gray-900"
@@ -71,20 +71,20 @@ export function TechEcosystem() {
                       </div>
                       <div>
                         <div
-                          className={`text-sm sm:text-base font-bold transition-colors ${
+                          className={`text-xs sm:text-base font-bold transition-colors ${
                             isActive ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
                           }`}
                         >
                           {layer.title}
                         </div>
-                        <div className="text-xs text-gray-500 line-clamp-1">
+                        <div className="text-[11px] sm:text-xs text-gray-500 line-clamp-1">
                           {layer.subtitle}
                         </div>
                       </div>
                     </div>
 
                     <span
-                      className={`text-xs font-mono transition-colors font-bold ${
+                      className={`text-[11px] sm:text-xs font-mono transition-colors font-bold shrink-0 ml-2 ${
                         isActive ? "text-[#e61f23]" : "text-gray-400"
                       }`}
                     >
@@ -114,7 +114,7 @@ export function TechEcosystem() {
           </div>
 
           {/* Right Layer Detail Card */}
-          <div className="lg:col-span-6 bg-gray-50/90 border border-gray-200 rounded-3xl p-8 sm:p-10 shadow-xl shadow-gray-200/50 relative overflow-hidden">
+          <div className="lg:col-span-6 bg-gray-50/90 border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/50 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayerIndex}
@@ -123,16 +123,16 @@ export function TechEcosystem() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center justify-between gap-3 mb-6">
+                <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-2xl bg-red-100 text-[#e61f23] border border-red-200">
-                      <Layers className="w-6 h-6" />
+                    <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-red-100 text-[#e61f23] border border-red-200 shrink-0">
+                      <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#e61f23]">
+                      <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#e61f23]">
                         {ecosystemLayers[activeLayerIndex].level}
                       </span>
-                      <h3 className="text-2xl font-black text-gray-950">
+                      <h3 className="text-xl sm:text-2xl font-black text-gray-950">
                         {ecosystemLayers[activeLayerIndex].title}
                       </h3>
                     </div>
@@ -143,19 +143,19 @@ export function TechEcosystem() {
                   </span>
                 </div>
 
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed mb-5 sm:mb-6">
                   {ecosystemLayers[activeLayerIndex].description}
                 </p>
 
-                <div className="space-y-4 pt-4 border-t border-gray-200">
+                <div className="space-y-3 sm:space-y-4 pt-4 border-t border-gray-200">
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-800">
                     Core Architectural Components
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                     {ecosystemLayers[activeLayerIndex].components.map((comp, cIdx) => (
                       <div
                         key={cIdx}
-                        className="p-3.5 rounded-xl bg-white border border-gray-200 hover:border-[#e61f23] hover:shadow-xs transition-all flex items-center gap-2.5 text-xs text-gray-800"
+                        className="p-3 sm:p-3.5 rounded-xl bg-white border border-gray-200 hover:border-[#e61f23] hover:shadow-xs transition-all flex items-center gap-2.5 text-xs text-gray-800"
                       >
                         <CheckCircle className="w-4 h-4 text-[#e61f23] shrink-0" />
                         <span className="font-medium">{comp}</span>
@@ -164,7 +164,7 @@ export function TechEcosystem() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-4 rounded-2xl bg-white border border-gray-200 flex items-center gap-3 shadow-xs">
+                <div className="mt-6 sm:mt-8 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-200 flex items-center gap-3 shadow-xs">
                   <Sparkles className="w-4 h-4 text-[#e61f23] shrink-0" />
                   <p className="text-xs text-gray-600">
                     Designed to operate in synergy with regional power grids, local banking networks, and domestic regulatory frameworks.

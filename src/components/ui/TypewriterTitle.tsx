@@ -46,7 +46,7 @@ export function TypewriterTitle({
 
   return (
     <h1
-      className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight text-gray-950 leading-[1.08]"
+      className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-gray-950 leading-[1.12] sm:leading-[1.08] break-words"
       aria-label={`${prefix}${highlight}`}
     >
       <span aria-hidden="true">

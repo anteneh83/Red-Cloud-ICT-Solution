@@ -49,23 +49,23 @@ export function WhyRedCloud() {
           </ScrollReveal>
 
           {/* Right Column: 5 Value Pillars Vertical List */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
             {whyRedCloudData.map((pillar, idx) => (
               <ScrollReveal key={pillar.number} direction="right" delay={idx * 0.1} duration={0.6}>
-                <div className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 shadow-xs group">
-                  <div className="flex items-start gap-4">
-                    <span className="text-2xl font-black font-mono text-[#e61f23] group-hover:scale-110 transition-transform duration-300">
+                <div className="p-5 sm:p-7 lg:p-8 rounded-xl sm:rounded-2xl bg-white border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 shadow-xs group">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <span className="text-xl sm:text-2xl font-black font-mono text-[#e61f23] group-hover:scale-110 transition-transform duration-300 shrink-0">
                       {pillar.number}
                     </span>
 
                     <div className="space-y-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-950 group-hover:text-[#e61f23] transition-colors duration-300">
+                      <h3 className="text-base sm:text-xl font-bold text-gray-950 group-hover:text-[#e61f23] transition-colors duration-300">
                         {pillar.title}
                       </h3>
                       <div className="text-xs font-semibold text-[#e61f23]">
                         {pillar.subtitle}
                       </div>
-                      <p className="text-sm text-gray-600 leading-relaxed pt-1">
+                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-1">
                         {pillar.description}
                       </p>
                     </div>

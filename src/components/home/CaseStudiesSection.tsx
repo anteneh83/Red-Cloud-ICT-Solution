@@ -31,12 +31,12 @@ export function CaseStudiesSection() {
         </ScrollReveal>
 
         {/* Case Study Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {caseStudiesData.map((cs, idx) => (
             <ScrollReveal key={cs.id} direction="up" delay={idx * 0.12} duration={0.6}>
-              <div className="h-full p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
+              <div className="h-full p-5 sm:p-7 lg:p-8 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
                 <div>
-                  <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center justify-between gap-3 mb-4">
                     <span className="text-xs font-mono font-bold uppercase text-[#e61f23]">
                       {cs.industry}
                     </span>
@@ -45,14 +45,14 @@ export function CaseStudiesSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-950 mb-3 group-hover:text-[#e61f23] transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-950 mb-3 group-hover:text-[#e61f23] transition-colors duration-300">
                     {cs.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-5 sm:mb-6">
                     {cs.summary}
                   </p>
 
-                  <div className="space-y-4 pt-4 border-t border-gray-200">
+                  <div className="space-y-3 sm:space-y-4 pt-4 border-t border-gray-200">
                     <div>
                       <span className="text-xs font-bold uppercase tracking-wider text-gray-800 block mb-1">
                         The Operational Challenge
@@ -72,7 +72,7 @@ export function CaseStudiesSection() {
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-gray-200 flex items-center justify-between">
+                <div className="pt-5 sm:pt-6 mt-5 sm:mt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex flex-wrap gap-1.5">
                     {cs.technologies.map((tech, tIdx) => (
                       <span

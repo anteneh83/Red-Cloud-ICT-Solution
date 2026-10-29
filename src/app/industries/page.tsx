@@ -33,40 +33,40 @@ export default function IndustriesPage() {
 
   return (
     <main className="flex-1 pt-24 pb-20 bg-white">
-      <section className="py-16 bg-gray-50 border-b border-gray-200 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-200 text-center">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
             Sector Ecosystems
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
             Industries We <span className="text-[#e61f23]">Serve</span>
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-lg max-w-2xl mx-auto">
             Deep domain technology solutions bridging local regulatory compliance with resilient digital infrastructure.
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {industriesData.map((ind) => (
               <div
                 key={ind.id}
-                className="p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] flex flex-col justify-between transition-all shadow-xs"
+                className="p-5 sm:p-7 lg:p-8 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] flex flex-col justify-between transition-all shadow-xs"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mb-5 sm:mb-6 shrink-0">
                     {getIcon(ind.iconName)}
                   </div>
 
-                  <h2 className="text-2xl font-bold text-gray-950 mb-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-950 mb-1">
                     {ind.name}
                   </h2>
                   <p className="text-xs text-[#e61f23] font-semibold mb-3">
                     {ind.tagline}
                   </p>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
                     {ind.description}
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export default function IndustriesPage() {
                     {ind.keySolutions.map((sol, idx) => (
                       <span
                         key={idx}
-                        className="text-xs font-medium px-2.5 py-1 rounded bg-white border border-gray-200 text-gray-700"
+                        className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white border border-gray-200 text-gray-700"
                       >
                         {sol}
                       </span>

@@ -25,10 +25,10 @@ export function PartnersSection() {
         </ScrollReveal>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {partnersData.map((category, idx) => (
             <ScrollReveal key={idx} direction="up" delay={idx * 0.12} duration={0.6}>
-              <div className="h-full p-7 rounded-2xl bg-white border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
+              <div className="h-full p-5 sm:p-7 rounded-xl sm:rounded-2xl bg-white border border-gray-200 hover:border-[#e61f23] hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col justify-between shadow-xs group">
                 <div>
                   <h3 className="text-base font-bold text-gray-950 mb-1 group-hover:text-[#e61f23] transition-colors duration-300">
                     {category.category}
@@ -67,7 +67,7 @@ export function PartnersSection() {
 
         {/* Partner CTA */}
         <ScrollReveal direction="up" delay={0.3} duration={0.6}>
-          <div className="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-[#e61f23] hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300">
+          <div className="p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-[#e61f23] hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300">
             <div className="space-y-1 text-center sm:text-left">
               <div className="text-base font-bold text-gray-950">
                 Interested in Becoming an Infrastructure or Platform Partner?
