@@ -32,7 +32,7 @@ export function PartnersSection() {
                   <h3 className="text-base font-bold text-gray-950 mb-1 group-hover:text-[#e61f23] transition-colors duration-300">
                     {category.category}
                   </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed mb-6">
+                  <p className="text-xs text-gray-500 leading-relaxed mb-6 line-clamp-2 sm:line-clamp-none">
                     {category.description}
                   </p>
 
@@ -53,7 +53,7 @@ export function PartnersSection() {
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-gray-100 text-center">
+                <div className="pt-6 mt-6 border-t border-gray-100 text-center hidden sm:block">
                   <span className="text-[11px] text-gray-400 font-medium">
                     [Official partner logos will be published upon verified release]
                   </span>

@@ -63,7 +63,7 @@ export function ProductsSection() {
 
                   <div className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 pt-4 border-t border-gray-100">
                     {product.capabilities.map((cap, cIdx) => (
-                      <div key={cIdx} className="flex items-center gap-2.5 text-xs text-gray-700">
+                      <div key={cIdx} className={`items-center gap-2.5 text-xs text-gray-700 ${cIdx >= 2 ? "hidden sm:flex" : "flex"}`}>
                         <Check className="w-4 h-4 text-[#e61f23] shrink-0" />
                         <span>{cap}</span>
                       </div>
@@ -72,7 +72,7 @@ export function ProductsSection() {
                 </div>
 
                 <div className="pt-4 sm:pt-5 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-                  <span className="text-xs text-gray-500 italic">
+                  <span className="text-xs text-gray-500 italic hidden sm:inline">
                     {product.statusText}
                   </span>
                   <Link

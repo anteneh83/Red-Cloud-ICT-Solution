@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { industriesData } from "@/data/industries";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
@@ -19,6 +20,7 @@ import {
 export function IndustriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [userInteracting, setUserInteracting] = useState(false);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
 
   const carouselItems = [...industriesData, ...industriesData];
 
@@ -102,26 +104,6 @@ export function IndustriesSection() {
             </div>
 
             <div className="flex items-center gap-3 self-start md:self-end">
-
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => handleScroll("left")}
-                  className="w-10 h-10 rounded-xl bg-white border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-xs hover:shadow-md hover:shadow-red-500/10 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                  aria-label="Slide left"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleScroll("right")}
-                  className="w-10 h-10 rounded-xl bg-white border border-gray-200 hover:border-[#e61f23] text-gray-700 hover:text-[#e61f23] shadow-xs hover:shadow-md hover:shadow-red-500/10 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                  aria-label="Slide right"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-
               <Link
                 href="/industries"
                 className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-[#e61f23] transition-colors group ml-2"
@@ -134,7 +116,104 @@ export function IndustriesSection() {
         </ScrollReveal>
       </div>
 
-      <div className="relative w-full py-4 group/carousel">
+      {/* Mobile View: Clean, 100% visible active card with zero clipping, horizontal scroll removed */}
+      <div className="block sm:hidden px-4 pt-2">
+        {/* Navigation Switcher Pills */}
+        <div className="flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-none no-scrollbar">
+          {industriesData.map((ind, i) => {
+            const isActive = i === activeMobileIndex;
+            return (
+              <button
+                key={ind.id}
+                type="button"
+                onClick={() => setActiveMobileIndex(i)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${isActive
+                    ? "bg-[#e61f23] text-white shadow-sm"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+              >
+                {ind.name.split(" ")[0]}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Full-width Active Card */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={industriesData[activeMobileIndex].id}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="w-full bg-white border border-gray-200 rounded-2xl p-5 shadow-lg shadow-gray-200/50 flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-[#e61f23]">
+                  {getIndustryIcon(industriesData[activeMobileIndex].iconName)}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActiveMobileIndex(
+                        (prev) => (prev - 1 + industriesData.length) % industriesData.length
+                      )
+                    }
+                    className="w-8 h-8 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 active:bg-gray-200"
+                    aria-label="Previous industry"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs font-mono font-bold text-gray-500 px-1">
+                    0{activeMobileIndex + 1} / 0{industriesData.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActiveMobileIndex((prev) => (prev + 1) % industriesData.length)
+                    }
+                    className="w-8 h-8 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 active:bg-gray-200"
+                    aria-label="Next industry"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              <h3 className="text-lg font-bold text-gray-950 mb-1">
+                {industriesData[activeMobileIndex].name}
+              </h3>
+              <p className="text-xs text-[#e61f23] font-semibold mb-2">
+                {industriesData[activeMobileIndex].tagline}
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed mb-4">
+                {industriesData[activeMobileIndex].description}
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-gray-100">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
+                Featured Capabilities
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {industriesData[activeMobileIndex].keySolutions.map((sol, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200 text-gray-700"
+                  >
+                    {sol}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Desktop View: Preserved Horizontal Auto-scrolling Carousel */}
+      <div className="hidden sm:block relative w-full py-4 group/carousel">
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/85 to-transparent z-20 flex items-center pl-3 sm:pl-6">
           <div className="w-1 h-28 rounded-full bg-gradient-to-b from-transparent via-[#e61f23]/40 to-transparent shadow-sm" />
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { solutionsData } from "@/data/solutions";
@@ -19,6 +19,7 @@ import {
 export function SolutionsShowcase() {
   const [activeSolutionId, setActiveSolutionId] = useState<string>(solutionsData[0].id);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -33,6 +34,19 @@ export function SolutionsShowcase() {
 
     return () => clearInterval(timer);
   }, [isPaused, activeSolutionId]);
+
+  useEffect(() => {
+    const container = tabsContainerRef.current;
+    if (!container) return;
+    const tabEl = document.getElementById(`sol-tab-${activeSolutionId}`);
+    if (tabEl) {
+      const targetScroll = tabEl.offsetLeft - (container.clientWidth / 2) + (tabEl.clientWidth / 2);
+      container.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    }
+  }, [activeSolutionId]);
 
   const activeSolution = solutionsData.find((s) => s.id === activeSolutionId) || solutionsData[0];
 
@@ -113,7 +127,7 @@ export function SolutionsShowcase() {
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-950">
                       {activeSolution.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5 hidden sm:block">
                       {activeSolution.summary}
                     </p>
                   </div>
@@ -141,7 +155,7 @@ export function SolutionsShowcase() {
                 </div>
 
                 <div className="pt-5 sm:pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <span className="text-xs text-gray-500 italic">
+                  <span className="text-xs text-gray-500 italic hidden sm:inline">
                     {activeSolution.specsStatusText}
                   </span>
 
@@ -157,53 +171,57 @@ export function SolutionsShowcase() {
             </AnimatePresence>
           </div>
 
-          <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
+          <div
+            ref={tabsContainerRef}
+            className="lg:col-span-5 flex lg:flex-col gap-2.5 overflow-x-auto pb-3 lg:pb-0 scroll-smooth snap-x snap-mandatory no-scrollbar"
+          >
             {solutionsData.map((sol) => {
               const isSelected = sol.id === activeSolutionId;
               return (
                 <button
                   key={sol.id}
+                  id={`sol-tab-${sol.id}`}
                   type="button"
                   onClick={() => {
                     setActiveSolutionId(sol.id);
                   }}
-                  className={`w-full text-left p-3.5 sm:p-4.5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isSelected
+                  className={`shrink-0 snap-center min-w-[200px] sm:min-w-[230px] lg:min-w-0 lg:w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-300 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isSelected
                       ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
                       : "bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5 hover:shadow-sm"
                     }`}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2.5 sm:gap-4">
                     <span
-                      className={`text-sm font-mono font-bold ${isSelected ? "text-[#e61f23]" : "text-gray-400 group-hover:text-gray-600"
+                      className={`text-xs sm:text-sm font-mono font-bold ${isSelected ? "text-[#e61f23]" : "text-gray-400 group-hover:text-gray-600"
                         }`}
                     >
                       {sol.index}
                     </span>
 
                     <div
-                      className={`p-2.5 rounded-xl transition-colors ${isSelected
+                      className={`p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl transition-colors ${isSelected
                           ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
                           : "bg-gray-100 text-gray-600 group-hover:bg-red-50 group-hover:text-[#e61f23]"
                         }`}
                     >
-                      {getSolutionIcon(sol.iconName, "w-5 h-5")}
+                      {getSolutionIcon(sol.iconName, "w-4 h-4 sm:w-5 sm:h-5")}
                     </div>
 
                     <div>
                       <div
-                        className={`text-sm font-bold transition-colors ${isSelected ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
+                        className={`text-xs sm:text-sm font-bold transition-colors whitespace-nowrap sm:whitespace-normal ${isSelected ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
                           }`}
                       >
                         {sol.title}
                       </div>
-                      <div className="text-xs text-gray-500 line-clamp-1 mt-0.5">
+                      <div className="text-[11px] sm:text-xs text-gray-500 line-clamp-1 mt-0.5 hidden sm:block">
                         {sol.category}
                       </div>
                     </div>
                   </div>
 
                   <ArrowRight
-                    className={`w-4 h-4 transition-transform ${isSelected
+                    className={`w-4 h-4 transition-transform hidden lg:block ${isSelected
                         ? "text-[#e61f23] translate-x-1"
                         : "text-gray-400 group-hover:text-gray-600 group-hover:translate-x-0.5"
                       }`}

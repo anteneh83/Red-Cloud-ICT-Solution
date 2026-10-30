@@ -12,11 +12,11 @@ export function AboutSection() {
     <section id="about" className="scroll-mt-16 sm:scroll-mt-20 relative py-16 sm:py-24 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-stretch">
-          <ScrollReveal direction="left" duration={0.8} className="flex">
+          <ScrollReveal direction="left" duration={0.8} className="flex order-2 lg:order-1">
             <AboutVideoPlayer className="w-full h-full min-h-[260px] sm:min-h-[380px] lg:min-h-[520px] aspect-video lg:aspect-auto" />
           </ScrollReveal>
 
-          <ScrollReveal direction="right" duration={0.8} className="flex flex-col justify-center space-y-5 sm:space-y-6">
+          <ScrollReveal direction="right" duration={0.8} className="flex flex-col justify-center space-y-5 sm:space-y-6 order-1 lg:order-2">
             <div className="space-y-2.5 sm:space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider">
                 About Us
@@ -25,7 +25,7 @@ export function AboutSection() {
                 Welcome to <span className="text-[#e61f23]">{companyData.name}</span>, your trusted partner in digital transformation.
               </h2>
               <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed pt-1">
-                {companyData.about}
+                Established in {companyData.established} at the Ethiopian IT Park, we are a leading force in the ICT industry, committed to innovation, engineering quality, and domestic enterprise customer satisfaction.
               </p>
             </div>
 

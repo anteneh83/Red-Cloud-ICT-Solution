@@ -11,9 +11,22 @@ import { TypewriterTitle } from "@/components/ui/TypewriterTitle";
 export function Hero() {
   return (
     <section id="hero" className="scroll-mt-20 relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-50" />
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1440px] h-[480px] bg-radial-gradient pointer-events-none" />
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+        <div className="relative w-[340px] sm:w-[580px] md:w-[720px] lg:w-[920px] h-[220px] sm:h-[360px] md:h-[450px] lg:h-[560px] opacity-[0.09] sm:opacity-[0.08] filter blur-[3px] sm:blur-[4px] scale-100 sm:scale-105">
+          <Image
+            src="/assets/logo-clean.png"
+            alt=""
+            fill
+            sizes="(max-width: 640px) 340px, (max-width: 1024px) 720px, 920px"
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -80,18 +93,18 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 relative flex items-center justify-center"
+            className="hidden lg:flex lg:col-span-5 relative items-center justify-center"
           >
             <div className="absolute w-72 sm:w-80 h-72 sm:h-80 bg-[#e61f23]/12 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
 
             <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-none animate-hero-float">
-              <div className="relative">
+              <div className="relative border-none outline-none shadow-none">
                 <Image
                   src="/assets/hero-illustration.png"
                   alt="Red Cloud Digital Infrastructure & Team Collaboration"
                   width={680}
                   height={680}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain border-none outline-none shadow-none mix-blend-multiply select-none"
                   priority
                 />
 

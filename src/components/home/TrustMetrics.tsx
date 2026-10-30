@@ -22,7 +22,7 @@ export function TrustMetrics() {
                     {metric.label}
                   </div>
 
-                  <p className="text-[11px] sm:text-xs text-gray-500 leading-normal">
+                  <p className="text-[11px] sm:text-xs text-gray-500 leading-normal hidden sm:block">
                     {metric.description}
                   </p>
                 </div>

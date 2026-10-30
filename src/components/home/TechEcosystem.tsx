@@ -1,14 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ecosystemLayers } from "@/data/ecosystem";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Layers, ArrowDown, CheckCircle, Sparkles } from "lucide-react";
+import {
+  Network,
+  Cpu,
+  CreditCard,
+  Layers,
+  Workflow,
+  TrendingUp,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
 
 export function TechEcosystem() {
   const [activeLayerIndex, setActiveLayerIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -19,6 +30,40 @@ export function TechEcosystem() {
 
     return () => clearInterval(timer);
   }, [isPaused, activeLayerIndex]);
+
+  useEffect(() => {
+    const container = tabsContainerRef.current;
+    if (!container) return;
+    const tabEl = document.getElementById(`eco-tab-${activeLayerIndex}`);
+    if (tabEl) {
+      const targetScroll = tabEl.offsetLeft - (container.clientWidth / 2) + (tabEl.clientWidth / 2);
+      container.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    }
+  }, [activeLayerIndex]);
+
+  const activeLayer = ecosystemLayers[activeLayerIndex];
+
+  const getLayerIcon = (idx: number, className = "w-6 h-6") => {
+    switch (idx) {
+      case 0:
+        return <Network className={className} />;
+      case 1:
+        return <Cpu className={className} />;
+      case 2:
+        return <CreditCard className={className} />;
+      case 3:
+        return <Layers className={className} />;
+      case 4:
+        return <Workflow className={className} />;
+      case 5:
+        return <TrendingUp className={className} />;
+      default:
+        return <Layers className={className} />;
+    }
+  };
 
   return (
     <section className="relative py-24 sm:py-32 bg-white border-t border-gray-200 overflow-hidden">
@@ -38,127 +83,143 @@ export function TechEcosystem() {
         </ScrollReveal>
 
         <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="lg:col-span-6 space-y-2.5 sm:space-y-3">
-            {ecosystemLayers.map((layer, idx) => {
-              const isActive = idx === activeLayerIndex;
-              return (
-                <div key={layer.level} className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setActiveLayerIndex(idx)}
-                    className={`w-full text-left p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isActive
-                        ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
-                        : "bg-gray-50 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5"
-                      }`}
-                  >
-                    <div className="flex items-center gap-3 sm:gap-3.5">
-                      <div
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold transition-colors shrink-0 ${isActive
-                            ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
-                            : "bg-white border border-gray-200 text-gray-600 group-hover:text-gray-900"
-                          }`}
-                      >
-                        0{idx + 1}
-                      </div>
-                      <div>
-                        <div
-                          className={`text-xs sm:text-base font-bold transition-colors ${isActive ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
-                            }`}
-                        >
-                          {layer.title}
-                        </div>
-                        <div className="text-[11px] sm:text-xs text-gray-500 line-clamp-1">
-                          {layer.subtitle}
-                        </div>
-                      </div>
-                    </div>
-
-                    <span
-                      className={`text-[11px] sm:text-xs font-mono transition-colors font-bold shrink-0 ml-2 ${isActive ? "text-[#e61f23]" : "text-gray-400"
-                        }`}
-                    >
-                      {layer.level}
-                    </span>
-
-                    {isActive && (
-                      <motion.div
-                        key={activeLayerIndex}
-                        initial={{ width: "0%" }}
-                        animate={{ width: isPaused ? "100%" : "100%" }}
-                        transition={{ duration: isPaused ? 0 : 5, ease: "linear" }}
-                        className="absolute bottom-0 left-0 h-1 bg-[#e61f23]"
-                      />
-                    )}
-                  </button>
-
-                  {idx < ecosystemLayers.length - 1 && (
-                    <div className="flex justify-center py-0.5">
-                      <ArrowDown className="w-3.5 h-3.5 text-gray-300" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="lg:col-span-6 bg-gray-50/90 border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/50 relative overflow-hidden">
+          {/* Mobile: Detail Card on top (order-1), Desktop: Right Column (order-2) */}
+          <div className="order-1 lg:order-2 lg:col-span-7 bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/60 relative overflow-hidden transition-all duration-300">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayerIndex}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-red-100 text-[#e61f23] border border-red-200 shrink-0">
-                      <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </div>
-                    <div>
-                      <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#e61f23]">
-                        {ecosystemLayers[activeLayerIndex].level}
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-black text-gray-950">
-                        {ecosystemLayers[activeLayerIndex].title}
-                      </h3>
-                    </div>
+                <div className="flex items-center justify-between gap-4 mb-5 sm:mb-6">
+                  <span className="text-3xl sm:text-4xl font-black text-[#e61f23] font-mono">
+                    0{activeLayerIndex + 1}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-red-50 text-[#e61f23] border border-red-200">
+                      {activeLayer.level}
+                    </span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed mb-5 sm:mb-6">
-                  {ecosystemLayers[activeLayerIndex].description}
+                <div className="flex items-center gap-3.5 sm:gap-4 mb-4 sm:mb-5">
+                  <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-red-50 border border-red-200 text-[#e61f23] shrink-0">
+                    {getLayerIcon(activeLayerIndex, "w-6 h-6 sm:w-8 sm:h-8")}
+                  </div>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-950">
+                      {activeLayer.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5 hidden sm:block">
+                      {activeLayer.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed mb-6 sm:mb-8">
+                  {activeLayer.description}
                 </p>
 
-                <div className="space-y-3 sm:space-y-4 pt-4 border-t border-gray-200">
-                  <div className="text-xs font-bold uppercase tracking-wider text-gray-800">
+                <div className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
+                  <div className="text-xs font-bold uppercase tracking-wider text-gray-900">
                     Core Architectural Components
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-                    {ecosystemLayers[activeLayerIndex].components.map((comp, cIdx) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                    {activeLayer.components.map((comp, cIdx) => (
                       <div
                         key={cIdx}
-                        className="p-3 sm:p-3.5 rounded-xl bg-white border border-gray-200 hover:border-[#e61f23] hover:shadow-xs transition-all flex items-center gap-2.5 text-xs text-gray-800"
+                        className="flex items-center gap-2.5 text-xs text-gray-700 p-2.5 rounded-xl bg-gray-50 border border-gray-150 hover:bg-red-50/50 hover:border-red-200 transition-colors"
                       >
-                        <CheckCircle className="w-4 h-4 text-[#e61f23] shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#e61f23] shrink-0" />
                         <span className="font-medium">{comp}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-6 sm:mt-8 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-200 flex items-center gap-3 shadow-xs">
+                <div className="pt-5 sm:pt-6 border-t border-gray-100 flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#e61f23] shrink-0" />
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     Designed to operate in synergy with regional power grids, local banking networks, and domestic regulatory frameworks.
                   </p>
                 </div>
               </motion.div>
             </AnimatePresence>
+          </div>
+
+          {/* Mobile: Horizontal auto-sliding tabs below card (order-2), Desktop: Left Column (order-1) */}
+          <div
+            ref={tabsContainerRef}
+            className="order-2 lg:order-1 lg:col-span-5 relative flex lg:flex-col gap-2.5 overflow-x-auto pb-3 lg:pb-0 scroll-smooth snap-x snap-mandatory no-scrollbar"
+          >
+            {ecosystemLayers.map((layer, idx) => {
+              const isSelected = idx === activeLayerIndex;
+              return (
+                <button
+                  key={layer.level}
+                  id={`eco-tab-${idx}`}
+                  type="button"
+                  onClick={() => setActiveLayerIndex(idx)}
+                  className={`shrink-0 snap-center min-w-[200px] sm:min-w-[230px] lg:min-w-0 lg:w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-300 flex items-center justify-between group cursor-pointer relative overflow-hidden ${isSelected
+                      ? "bg-white border-[#e61f23] shadow-lg shadow-red-500/10 ring-1 ring-[#e61f23]"
+                      : "bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:-translate-y-0.5 hover:shadow-sm"
+                    }`}
+                >
+                  <div className="flex items-center gap-2.5 sm:gap-4">
+                    <span
+                      className={`text-xs sm:text-sm font-mono font-bold ${isSelected ? "text-[#e61f23]" : "text-gray-400 group-hover:text-gray-600"
+                        }`}
+                    >
+                      0{idx + 1}
+                    </span>
+
+                    <div
+                      className={`p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl transition-colors ${isSelected
+                          ? "bg-[#e61f23] text-white shadow-md shadow-red-500/30"
+                          : "bg-gray-100 text-gray-600 group-hover:bg-red-50 group-hover:text-[#e61f23]"
+                        }`}
+                    >
+                      {getLayerIcon(idx, "w-4 h-4 sm:w-5 sm:h-5")}
+                    </div>
+
+                    <div>
+                      <div
+                        className={`text-xs sm:text-sm font-bold transition-colors whitespace-nowrap sm:whitespace-normal ${isSelected ? "text-gray-950" : "text-gray-800 group-hover:text-gray-950"
+                          }`}
+                      >
+                        {layer.title}
+                      </div>
+                      <div className="text-[11px] sm:text-xs text-gray-500 line-clamp-1 mt-0.5 hidden sm:block">
+                        {layer.subtitle}
+                      </div>
+                    </div>
+                  </div>
+
+                  <ArrowRight
+                    className={`w-4 h-4 transition-transform hidden lg:block ${isSelected
+                        ? "text-[#e61f23] translate-x-1"
+                        : "text-gray-400 group-hover:text-gray-600 group-hover:translate-x-0.5"
+                      }`}
+                  />
+
+                  {isSelected && (
+                    <motion.div
+                      key={activeLayerIndex}
+                      initial={{ width: "0%" }}
+                      animate={{ width: isPaused ? "100%" : "100%" }}
+                      transition={{ duration: isPaused ? 0 : 5, ease: "linear" }}
+                      className="absolute bottom-0 left-0 h-1 bg-[#e61f23]"
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

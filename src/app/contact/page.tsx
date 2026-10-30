@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="flex-1 pt-24 pb-12 bg-white">
-      <section className="py-10 sm:py-14 bg-gray-50 border-b border-gray-200 text-center">
+      {/* <section className="py-10 sm:py-14 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
             Hotline {companyData.contact.shortCode}
@@ -24,7 +24,7 @@ export default function ContactPage() {
             Direct communication channels to our technical team, sales consultants, and corporate office.
           </p>
         </div>
-      </section>
+      </section> */}
 
       <ContactSection />
     </main>
