@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { companyData } from "@/data/company";
 import "./globals.css";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col bg-white text-gray-800 antialiased selection:bg-[#e61f23] selection:text-white">
+        <ScrollProgressBar />
         <Header />
         {children}
         <Footer />

@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { productsData } from "@/data/products";
 import { companyData } from "@/data/company";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Package, Check, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -16,83 +17,88 @@ export default function ProductsPage() {
     <main className="flex-1 pt-24 pb-20 bg-white">
       <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-200 text-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
-            Software & Platforms
-          </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
-            Enterprise <span className="text-[#e61f23]">Products</span>
-          </h1>
-          <p className="text-gray-600 text-sm sm:text-lg max-w-2xl mx-auto">
-            High-performance software platforms designed to integrate seamlessly into existing enterprise ERPs and African payment networks.
-          </p>
+          <ScrollReveal direction="up">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#e61f23] uppercase tracking-wider mb-4">
+              Software & Platforms
+            </div>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-950 tracking-tight mb-3">
+              Enterprise <span className="text-[#e61f23]">Products</span>
+            </h1>
+            <p className="text-gray-600 text-sm sm:text-lg max-w-2xl mx-auto">
+              High-performance software platforms designed to integrate seamlessly into existing enterprise ERPs and African payment networks.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {productsData.map((prod) => (
-              <div
-                key={prod.id}
-                className="p-5 sm:p-8 lg:p-10 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] transition-all flex flex-col justify-between shadow-xs"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#e61f23] px-3 py-1 rounded bg-white border border-red-200">
-                      {prod.badge}
-                    </span>
-                    <span className="text-xs text-gray-500 font-medium">
-                      {prod.category}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-red-50 text-[#e61f23] border border-red-200 shrink-0">
-                      <Package className="w-5 h-5 sm:w-6 sm:h-6" />
+            {productsData.map((prod, pIdx) => (
+              <ScrollReveal key={prod.id} direction="up" delay={pIdx * 0.1}>
+                <div
+                  className="p-5 sm:p-8 lg:p-10 rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-200 hover:border-[#e61f23] transition-all flex flex-col justify-between shadow-xs h-full"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#e61f23] px-3 py-1 rounded bg-white border border-red-200">
+                        {prod.badge}
+                      </span>
+                      <span className="text-xs text-gray-500 font-medium">
+                        {prod.category}
+                      </span>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-950">
-                      {prod.name}
-                    </h2>
-                  </div>
 
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
-                    {prod.description}
-                  </p>
-
-                  <div className="space-y-2 mb-8 pt-4 border-t border-gray-200">
-                    <div className="text-xs font-bold uppercase tracking-wider text-gray-800 mb-2">
-                      Platform Capabilities
-                    </div>
-                    {prod.capabilities.map((cap, cIdx) => (
-                      <div key={cIdx} className="flex items-center gap-2.5 text-xs text-gray-700">
-                        <Check className="w-4 h-4 text-[#e61f23] shrink-0" />
-                        <span>{cap}</span>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-red-50 text-[#e61f23] border border-red-200 shrink-0">
+                        <Package className="w-5 h-5 sm:w-6 sm:h-6" />
                       </div>
-                    ))}
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-950">
+                        {prod.name}
+                      </h2>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
+                      {prod.description}
+                    </p>
+
+                    <div className="space-y-2 mb-8 pt-4 border-t border-gray-200">
+                      <div className="text-xs font-bold uppercase tracking-wider text-gray-800 mb-2">
+                        Platform Capabilities
+                      </div>
+                      {prod.capabilities.map((cap, cIdx) => (
+                        <div key={cIdx} className="flex items-center gap-2.5 text-xs text-gray-700">
+                          <Check className="w-4 h-4 text-[#e61f23] shrink-0" />
+                          <span>{cap}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span className="text-xs text-gray-500 italic">
+                      {prod.statusText}
+                    </span>
+                    <Link
+                      href="/contact"
+                      className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider w-full sm:w-auto"
+                    >
+                      <span>Request Product Demo</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <span className="text-xs text-gray-500 italic">
-                    {prod.statusText}
-                  </span>
-                  <Link
-                    href="/contact"
-                    className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider w-full sm:w-auto"
-                  >
-                    <span>Request Product Demo</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-16 p-6 rounded-2xl bg-gray-50 border border-gray-200 text-center">
-            <p className="text-xs text-gray-500 max-w-xl mx-auto">
-              [Proprietary product releases and integrations will be featured as official documentation is finalized.]
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="mt-16 p-6 rounded-2xl bg-gray-50 border border-gray-200 text-center">
+              <p className="text-xs text-gray-500 max-w-xl mx-auto">
+                Proprietary product releases and integrations will be featured as official documentation is finalized.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </main>
