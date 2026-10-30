@@ -99,21 +99,33 @@ export function Hero() {
 
             <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-none animate-hero-float">
               <div className="relative border-none outline-none shadow-none">
-                <Image
-                  src="/assets/hero-illustration.png"
-                  alt="Red Cloud Digital Infrastructure & Team Collaboration"
-                  width={680}
-                  height={680}
-                  className="w-full h-auto object-contain border-none outline-none shadow-none mix-blend-multiply select-none"
-                  priority
-                />
+                <div
+                  className="relative select-none overflow-hidden"
+                  style={{
+                    maskImage:
+                      "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)",
+                    maskComposite: "intersect",
+                    WebkitMaskComposite: "source-in",
+                  }}
+                >
+                  <Image
+                    src="/assets/red-cloud-enterprise-tech-hub.png"
+                    alt="Red Cloud Enterprise Tech Hub"
+                    width={720}
+                    height={542}
+                    className="w-full h-auto object-contain border-none outline-none shadow-none select-none"
+                    priority
+                  />
+                </div>
 
-                <div className="absolute -top-2 right-1 sm:-top-3 sm:-right-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-white/95 border border-gray-200 shadow-md flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-gray-800 hover:border-[#e61f23] transition-colors whitespace-nowrap backdrop-blur-xs">
+                <div className="absolute -top-2 right-1 sm:-top-3 sm:-right-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-white/95 border border-gray-200 shadow-md flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-gray-800 hover:border-[#e61f23] transition-colors whitespace-nowrap backdrop-blur-xs z-20">
                   <Sparkles className="w-3.5 h-3.5 text-[#e61f23]" />
                   <span>Digital Transformation</span>
                 </div>
 
-                <div className="absolute -bottom-2 left-1 sm:-bottom-3 sm:-left-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-white/95 border border-gray-200 shadow-md flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-gray-800 hover:border-[#e61f23] transition-colors whitespace-nowrap backdrop-blur-xs">
+                <div className="absolute -bottom-2 left-1 sm:-bottom-3 sm:-left-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-white/95 border border-gray-200 shadow-md flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-gray-800 hover:border-[#e61f23] transition-colors whitespace-nowrap backdrop-blur-xs z-20">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#e61f23]" />
                   <span>Enterprise Cloud & Hosting</span>
                 </div>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1445 1089" width="100%" height="100%">
+  <defs>
+    <filter id="rectFeather" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+    <mask id="heroRectMask">
+      <rect width="1445" height="1089" fill="#000000" />
+      <rect x="55" y="45" width="1335" height="999" rx="20" fill="#ffffff" filter="url(#rectFeather)" />
+    </mask>
+  </defs>
+  <image
+    href="/assets/red-cloud-enterprise-tech-hub.png"
+    width="1445"
+    height="1089"
+    mask="url(#heroRectMask)"
+    preserveAspectRatio="xMidYMid meet"
+  />
+</svg>
+
